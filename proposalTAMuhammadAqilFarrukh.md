@@ -58,7 +58,7 @@ Fakultas Teknologi Elektro dan Informatika Cerdas
 
 Institut Teknologi Sepuluh Nopember
 
-Oleh: Muhammad Aqil Farrukh
+Oleh: **Muhammad Aqil Farrukh**
 
 NRP. 5025221158
 
@@ -100,16 +100,17 @@ Faculty of Intelligent Electrical and Informatics Technology
 
 Institut Teknologi Sepuluh Nopember
 
-By: \<**STUDENT NAME**\>
+By: **Muhammad Aqil Farrukh**
 
-NRP. \<XXXXXXXX\>
+NRP. 5025221158
 
 Approved by Final Project Proposal Examiner Team:
 
   --------------------------------------------------------------------------
-  1\.   \<Name and title\>                           Advisor
+  1\.   Shintami Chusnul Hidayati, S.Kom., M.Sc.,    Advisor
+        Ph.D                                         
   ----- -------------------------------------------- -----------------------
-  2\.   \<Name and title\>                           Co-advisor
+  2\.   Dini Adni Navastara, S.Kom., M.Sc.           Co-advisor
 
   3\.   \<Name and title\>                           Examiner 1
 
@@ -163,14 +164,14 @@ Pelatihan, Pendidikan.**
 FOR HUMAN-MACHINE INTERACTION SIMULATION***
 
 +----------------------+------------------+--------------------------------------------------------------------+
-| ***Full Name /       | **:**            | **\<Nama\> / \<NRP\>**                                             |
+| ***Full Name /       | **:**            | **Muhammad Aqil Farrukh / 5025221158**                             |
 | Student ID***        |                  |                                                                    |
 +======================+============+=====+=======================+============================================+
 | ***Department***     | **:**            | ***Informatics* ELECTICS - ITS**                                   |
 +----------------------+------------------+--------------------------------------------------------------------+
-| ***Advisor***        | **:**            | **\<Nama pembimbing dan gelar\>**                                  |
+| ***Advisor***        | **:**            | **Shintami Chusnul Hidayati, S.Kom., M.Sc., Ph.D**                 |
 +----------------------+------------+-----+-----------------------+--------------------------------------------+
-| ***Co-advisor***                  | **:**                       | **\<Nama pembimbing dan gelar\>**          |
+| ***Co-advisor***                  | **:**                       | **Dini Adni Navastara, S.Kom., M.Sc.**     |
 +-----------------------------------+-----------------------------+--------------------------------------------+
 
 ***Abstract***
@@ -194,27 +195,29 @@ Training, Education.***
 
 [LEMBAR PENGESAHAN [i](#lembar-pengesahan)](#lembar-pengesahan)
 
-[ABSTRAK [iii](#abstrak)](#abstrak)
+[APPROVAL SHEET [iii](#approval-sheet)](#approval-sheet)
 
-[*ABSTRACT* [v](#abstract)](#abstract)
+[ABSTRAK [v](#abstrak)](#abstrak)
 
-[DAFTAR ISI [vii](#daftar-isi)](#daftar-isi)
+[*ABSTRACT* [vii](#abstract)](#abstract)
 
-[DAFTAR GAMBAR [ix](#daftar-gambar)](#daftar-gambar)
+[DAFTAR ISI [ix](#daftar-isi)](#daftar-isi)
 
-[DAFTAR TABEL [xi](#daftar-tabel)](#daftar-tabel)
+[DAFTAR GAMBAR [xi](#daftar-gambar)](#daftar-gambar)
 
-[DAFTAR KODE SUMBER [xiii](#daftar-kode-sumber)](#daftar-kode-sumber)
+[DAFTAR TABEL [xiii](#daftar-tabel)](#daftar-tabel)
+
+[DAFTAR KODE SUMBER [xv](#daftar-kode-sumber)](#daftar-kode-sumber)
 
 [BAB 1 PENDAHULUAN [1](#pendahuluan)](#pendahuluan)
 
 [1.1 Latar Belakang [1](#latar-belakang)](#latar-belakang)
 
-[1.2 Rumusan Masalah [1](#rumusan-masalah)](#rumusan-masalah)
+[1.2 Rumusan Masalah [2](#rumusan-masalah)](#rumusan-masalah)
 
 [1.3 Batasan Masalah [2](#batasan-masalah)](#batasan-masalah)
 
-[1.4 Tujuan [2](#tujuan)](#tujuan)
+[1.4 Tujuan [3](#tujuan)](#tujuan)
 
 [1.5 Manfaat [3](#manfaat)](#manfaat)
 
