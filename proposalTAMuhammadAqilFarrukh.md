@@ -546,11 +546,6 @@ dan sebagainya.
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
 
-Guo, A., Li, Y., Wang, Z., Wu, J., & Xu, B. (2024). Personality
-prediction from task-oriented and open-domain human--machine dialogues.
-Scientific Reports, 14(1), 3868.
-<https://doi.org/10.1038/s41598-024-59702-1>
-
 Lukac, M. (2024). Speech-based personality prediction using deep
 learning with acoustic and linguistic embeddings. Scientific Reports 14,
 30149. <https://doi.org/10.1038/s41598-024-81047-0>
@@ -558,11 +553,6 @@ learning with acoustic and linguistic embeddings. Scientific Reports 14,
 Pearsell, S., & Pape, D. (2023). The effects of different voice
 qualities on the perceived personality of a speaker. *Frontiers in
 Communication*, *7*, 909427. <https://doi.org/10.3389/fcomm.2022.909427>
-
-Marrero, Z. N. K., Gosling, S. D., Pennebaker, J. W., & Harari, G. M.
-(2022). Evaluating voice samples as a potential source of information
-about personality. Acta Psychologica, 230, 103740.
-<https://doi.org/10.1016/j.actpsy.2022.103740>
 
 Rubio, V. J., Aguado, D., Toledano, D. T., & Fernández-Gallego, M. P.
 (2024). Feasibility of big data analytics to assess personality based on
