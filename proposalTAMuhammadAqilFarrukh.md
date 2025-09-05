@@ -65,9 +65,10 @@ NRP. 5025221158
 Disetujui oleh Tim Penguji Proposal Tugas Akhir:
 
   --------------------------------------------------------------------------
-  1\.   \<Nama dan gelar pembimbing\>                Pembimbing
+  1\.   Shintami Chusnul Hidayati, S.Kom., M.Sc.,    Pembimbing
+        Ph.D                                         
   ----- -------------------------------------------- -----------------------
-  2\.   \<Nama dan gelar ko-pembimbing/penguji\>     Ko-pembimbing
+  2\.   Dini Adni Navastara, S.Kom., M.Sc.           Ko-pembimbing
 
   3\.   \<Nama dan gelar penguji\>                   Penguji
 
@@ -127,14 +128,14 @@ Approved by Final Project Proposal Examiner Team:
 UNTUK SIMULASI INTERAKSI MANUSIA-MESIN**
 
 +----------------------+------------------+--------------------------------------------------------------------+
-| **Nama Mahasiswa /   | **:**            | **\<Nama\> / \<NRP\>**                                             |
+| **Nama Mahasiswa /   | **:**            | **Muhammad Aqil Farrukh / 5025221158**                             |
 | NRP**                |                  |                                                                    |
 +======================+============+=====+=======================+============================================+
 | **Departemen**       | **:**            | **Teknik Informatika FTEIC - ITS**                                 |
 +----------------------+------------------+--------------------------------------------------------------------+
-| **Dosen Pembimbing** | **:**            | **\<Nama pembimbing dan gelar\>**                                  |
+| **Dosen Pembimbing** | **:**            | **Shintami Chusnul Hidayati, S.Kom., M.Sc., Ph.D**                 |
 +----------------------+------------+-----+-----------------------+--------------------------------------------+
-| **Dosen Ko-pembimbing**           | **:**                       | **\<Nama pembimbing dan gelar\>**          |
+| **Dosen Ko-pembimbing**           | **:**                       | **Dini Adni Navastara, S.Kom., M.Sc.**     |
 +-----------------------------------+-----------------------------+--------------------------------------------+
 
 **Abstrak**
