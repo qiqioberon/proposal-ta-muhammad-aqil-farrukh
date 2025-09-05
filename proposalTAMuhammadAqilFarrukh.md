@@ -346,140 +346,117 @@ diimplementasikan secara luas. (Rubio et al., 2024)
 
 ## Rumusan Masalah
 
-Permasalahan penelitian harus dituliskan dalam bentuk deklaratif atau
-kalimat-kalimat pertanyaan yang tegas dan jelas. Masalah penelitian
-merupakan perumusan kesenjangan antara keadaan yang ada dengan keadaan
-yang ingin dicapai. Perumusan masalah dilakukan berdasarkan identifikasi
-masalah dan ruang lingkup penelitian yang akan dipecahkan. Perumusan
-masalah ini dapat diawali dengan paragraf pembuka yang menekankan
-kembali garis permasalahan penelitian yang dihadapi, lalu diikuti dengan
-beberapa pertanyaan penelitian yang terdaftar dalam angka.
+Penelitian mengenai estimasi kepribadian berbasis suara berkembang pesat
+dengan adanya kemajuan machine learning dan deep learning. Akan tetapi,
+masih terdapat kesenjangan dalam menentukan pendekatan mana yang paling
+efektif antara metode berbasis fitur akustik klasik dan model berbasis
+Transformer pra-latih. Selain itu, belum banyak penelitian yang secara
+sistematis membandingkan performa model klasik dengan model pra-latih
+pada data suara untuk prediksi kepribadian Big Five.
 
-Dalam pengembangan sistem VR untuk simulasi interaksi manusia-mesin,
-terdapat beberapa tantangan yang perlu diatasi untuk mencapai tingkat
-kenyamanan dan efektivitas yang tinggi. Interaksi yang buruk dalam
-lingkungan VR dapat mengurangi efektivitas pelatihan dan menyebabkan
-ketidaknyamanan bagi pengguna. Oleh karena itu, penelitian ini bertujuan
-untuk mengidentifikasi dan mengatasi berbagai masalah yang terkait
-dengan pengembangan sistem VR yang lebih baik. Berdasarkan latar
-belakang tersebut, rumusan masalah dalam penelitian ini adalah sebagai
-berikut:
+Berdasarkan latar belakang tersebut, rumusan masalah penelitian ini
+adalah sebagai berikut:
 
-1.  Bagaimana mengembangkan sistem VR yang mampu mensimulasikan
-    interaksi manusia-mesin dengan tingkat kenyamanan dan efektivitas
-    yang tinggi?
+1.  Bagaimana performa model berbasis fitur akustik klasik dengan metode
+    machine learning (misalnya SVM, XGBoost) dalam melakukan prediksi
+    kepribadian dari data suara?
 
-2.  Apa saja faktor-faktor yang mempengaruhi respons pengguna terhadap
-    berbagai skenario simulasi dalam lingkungan VR?
+2.  Bagaimana performa model Transformer pra-latih (misalnya Wav2Vec2,
+    HuBERT) dibandingkan dengan metode klasik dalam tugas prediksi
+    kepribadian berbasis suara?
 
-3.  Bagaimana metode pengumpulan data yang paling efektif untuk
-    menganalisis interaksi manusia-mesin dalam sistem VR?
+3.  Bagaimana perbedaan hasil antara pendekatan feature extraction
+    (frozen embedding) dan fine-tuning pada model Transformer pra-latih
+    untuk estimasi kepribadian?
 
-4.  Sejauh mana sistem VR yang dikembangkan dapat meningkatkan kualitas
-    pelatihan dibandingkan metode konvensional?
-
-5.  Bagaimana sistem VR dapat diadaptasi untuk berbagai aplikasi lain,
-    seperti simulasi medis, pelatihan militer, dan pendidikan teknik?
+4.  Apakah kombinasi fitur akustik klasik dengan embedding Transformer
+    pra-latih dapat meningkatkan akurasi prediksi kepribadian dibanding
+    penggunaan salah satu pendekatan saja?
 
 ## Batasan Masalah
 
-Penelitian ini memiliki beberapa batasan yang perlu diperhatikan untuk
-memastikan fokus dan keterbatasan dalam pengembangan sistem VR untuk
-simulasi interaksi manusia-mesin. Batasan-batasan ini ditetapkan untuk
-mengarahkan penelitian agar tetap berada dalam lingkup yang dapat
-dikelola dan menghasilkan hasil yang relevan. Adapun batasan masalah
-dalam penelitian ini adalah sebagai berikut:
+Untuk menjaga fokus dan keterkelolaan penelitian, maka batasan masalah
+yang ditetapkan adalah sebagai berikut:
 
-1.  Penelitian ini hanya mencakup simulasi interaksi manusia-mesin dalam
-    konteks pelatihan dan pendidikan. Aplikasi VR untuk hiburan,
-    permainan, atau bidang lain tidak termasuk dalam lingkup penelitian
-    ini.
+1.  Penelitian hanya membahas prediksi kepribadian *Big Five*
+    (*Openness, Conscientiousness, Extraversion, Agreeableness,
+    Neuroticism*).
 
-2.  Sistem VR yang dikembangkan menggunakan perangkat keras dan
-    perangkat lunak yang tersedia secara komersial pada saat penelitian
-    dilakukan. Penggunaan teknologi eksperimental atau prototipe tidak
-    termasuk dalam penelitian ini.
+2.  Dataset yang digunakan adalah dataset publik yang tersedia dan telah
+    memiliki label kepribadian.
 
-3.  Pengumpulan data dilakukan melalui survei, wawancara, dan pengamatan
-    langsung. Metode lain seperti eksperimen laboratorium atau studi
-    longitudinal tidak digunakan dalam penelitian ini.
+3.  Data yang dianalisis hanya berupa suara/audio. Data visual atau
+    multimodal lain tidak termasuk dalam lingkup penelitian ini.
 
-4.  Penelitian ini melibatkan partisipan yang memiliki latar belakang
-    pendidikan dan pelatihan yang relevan dengan konteks simulasi.
-    Partisipan dari latar belakang yang tidak relevan tidak termasuk
-    dalam penelitian ini.
+4.  Model yang dibandingkan terbatas pada machine learning klasik (SVM,
+    XGBoost) dan Transformer pra-latih (misalnya Wav2Vec2, HuBERT),
+    serta variasinya (frozen vs fine-tuning).
 
-5.  Analisis data dilakukan menggunakan teknik statistik dasar dan
-    metode kualitatif. Penggunaan teknik analisis data yang lebih
-    kompleks atau canggih tidak termasuk dalam lingkup penelitian ini.
+5.  Evaluasi dilakukan menggunakan metrik kuantitatif (Pearson
+    correlation, RMSE, MAE) dengan metode cross-validation, tanpa
+    melibatkan uji persepsi manusia.
 
 ## Tujuan
 
-Penelitian ini bertujuan untuk mengembangkan sistem VR yang dapat
-digunakan untuk simulasi interaksi manusia-mesin dalam konteks pelatihan
-dan pendidikan. Adapun tujuan spesifik dari penelitian ini adalah
-sebagai berikut:
+Tujuan penelitian ini adalah untuk melakukan analisis komparatif
+pendekatan machine learning klasik dan Transformer pra-latih dalam
+estimasi kepribadian berbasis suara. Tujuan spesifik dari penelitian ini
+adalah:
 
-1.  Mengembangkan sistem VR yang mampu mensimulasikan interaksi
-    manusia-mesin dengan tingkat kenyamanan dan efektivitas yang tinggi.
+1.  Mengevaluasi performa model berbasis fitur akustik klasik dengan
+    metode machine learning (SVM, XGBoost).
 
-2.  Menganalisis faktor-faktor yang mempengaruhi respons pengguna
-    terhadap berbagai skenario simulasi dalam lingkungan VR.
+2.  Menganalisis efektivitas model Transformer pra-latih (Wav2Vec2,
+    HuBERT) untuk prediksi kepribadian berbasis suara.
 
-3.  Menentukan metode pengumpulan data yang paling efektif untuk
-    menganalisis interaksi manusia-mesin dalam sistem VR.
+3.  Membandingkan hasil antara feature extraction (frozen) dan
+    fine-tuning pada model Transformer pra-latih.
 
-4.  Mengevaluasi sejauh mana sistem VR yang dikembangkan dapat
-    meningkatkan kualitas pelatihan dibandingkan metode konvensional.
+4.  Mengkaji potensi fusion antara fitur akustik klasik dan embedding
+    Transformer dalam meningkatkan akurasi prediksi.
 
-5.  Mengidentifikasi potensi adaptasi sistem VR untuk berbagai aplikasi
-    lain, seperti simulasi medis, pelatihan militer, dan pendidikan
-    teknik.
+5.  Mengidentifikasi model terbaik yang dapat digunakan sebagai acuan
+    untuk penelitian lebih lanjut dalam bidang personality computing
+    berbasis suara.
 
 ## Manfaat
 
-Penelitian Tugas Akhir ini diharapkan dapat memberikan berbagai manfaat,
-baik secara teoritis maupun praktis, dalam pengembangan teknologi VR
-untuk simulasi interaksi manusia-mesin. Adapun manfaat penelitian ini
-adalah sebagai berikut.
+Penelitian ini diharapkan dapat memberikan manfaat baik secara teoritis,
+praktis, maupun sosial.
 
 ### Manfaat Teoritis
 
-1.  Menambah wawasan dan pengetahuan dalam bidang VR, khususnya terkait
-    dengan interaksi manusia-mesin.
+1.  Menambah wawasan dan pengetahuan dalam bidang computational
+    personality assessment berbasis suara.
 
-2.  Memberikan kontribusi terhadap literatur ilmiah mengenai metode
-    pengembangan dan evaluasi sistem VR.
+2.  Memberikan kontribusi pada literatur mengenai perbandingan performa
+    model klasik dan Transformer pra-latih dalam analisis kepribadian.
 
-3.  Mengidentifikasi faktor-faktor yang mempengaruhi efektivitas dan
-    kenyamanan pengguna dalam lingkungan VR.
+3.  Mengidentifikasi faktor teknis (fitur, model, strategi training)
+    yang memengaruhi akurasi prediksi kepribadian berbasis audio.
 
 ### Manfaat Praktis
 
-1.  Mengembangkan sistem VR yang dapat digunakan untuk meningkatkan
-    kualitas pelatihan dan pendidikan.
+1.  Memberikan acuan model AI yang efektif untuk prediksi kepribadian
+    berbasis suara.
 
-2.  Memberikan solusi praktis untuk simulasi interaksi manusia-mesin
-    yang lebih efektif dan nyaman.
+2.  Memberikan rekomendasi pendekatan (klasik vs Transformer pra-latih)
+    yang lebih tepat untuk digunakan pada aplikasi nyata.
 
-3.  Memungkinkan adaptasi sistem VR untuk berbagai aplikasi lain,
-    seperti simulasi medis, pelatihan militer, dan pendidikan teknik.
-
-4.  Meningkatkan kemampuan pengguna dalam menghadapi situasi kompleks
-    dan berbahaya melalui simulasi yang aman dan terkendali.
+3.  Menyediakan kerangka eksperimen yang dapat direplikasi oleh peneliti
+    lain atau pengembang sistem AI.
 
 ### Manfaat Sosial
 
-1.  Meningkatkan aksesibilitas teknologi VR dalam bidang pendidikan dan
-    pelatihan, sehingga lebih banyak individu dapat merasakan
-    manfaatnya.
+1.  Mendukung pengembangan aplikasi AI yang dapat memahami karakteristik
+    individu secara lebih personal melalui suara.
 
-2.  Mengurangi risiko cedera dan kesalahan dalam pelatihan praktis
-    melalui penggunaan simulasi VR.
+2.  Membuka peluang pemanfaatan teknologi ini di bidang rekrutmen,
+    pendidikan, dan layanan pelanggan dengan tetap memperhatikan etika
+    dan privasi.
 
-3.  Mendorong inovasi dan pengembangan teknologi VR di Indonesia,
-    sehingga dapat bersaing dengan negara lain dalam bidang teknologi
-    informasi.
+3.  Mendorong inovasi riset interdisipliner di Indonesia dalam bidang
+    psikologi komputasional dan kecerdasan buatan..
 
 *Halaman ini sengaja dikosongkan.*
 
