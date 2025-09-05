@@ -269,47 +269,80 @@ Training, Education.***
 
 ## Latar Belakang
 
-Bagian ini secara umum berisi latar belakang dan alasan penulis memilih
-objek penelitian. Uraian dimulai dengan penjelasan mengenai hal yang
-bersifat umum terkait dengan topik TA, kemudian diarahkan kepada hal
-yang lebih khusus yaitu judul proposal TA. Objek yang akan diteliti
-harus dijelaskan secara konkret sebagai pengantar menuju permasalahan,
-dan sebagai hasil kajian / studi terdahulu / hasil analisis atas data
-sekunder, tentang obyek yang akan diteliti / dirancang, disertai alasan
-mengapa masalah tersebut perlu diteliti baik secara teoritis maupun
-praktis.
+Suara manusia tidak hanya menyampaikan isi pesan, tetapi juga
+merefleksikan identitas dari penutur. Identitas yang dimaksud berupa
+usia, aksen budaya, hingga kepribadian dari penutur (Lukac, 2024).
+Gagasan ini sebenarnya telah dikemukakan sejak awal abad ke-20, dimana
+penelitian pada tahun 1930-an sudah berusaha mengaitkan ciri-ciri vokal
+dengan kepribadian individu. Meskipun demikian, temuan di era awal
+tersebut cenderung belum konsisten, sehingga keterkaitan antara vokal
+dengan kepribadian manusia tetap menjadi teka-teki ilmiah selama
+beberapa dekade (Lukac, 2024; Rubio et al., 2024).
 
-*Virtual Reality* (VR) merupakan kata dalam Bahasa Inggris, sehingga
-penulisannya perlu dimiringkan (*italic*). VR telah menjadi salah satu
-teknologi yang paling inovatif dalam dekade terakhir, memungkinkan
-pengguna untuk berinteraksi dengan lingkungan digital yang menyerupai
-dunia nyata. Teknologi ini telah diterapkan dalam berbagai bidang,
-termasuk hiburan, pendidikan, pelatihan, dan medis, untuk menciptakan
-pengalaman yang imersif dan realistis.
+Perkembangan teknologi dalam analisis suara dan generalisasi dari
+analisis *big data* menciptakan kesempatan besar untuk mengestimasi
+kepribadian manusia berdasarkan kekuatan fitur dalam suara manusia
+(Rubio et al., 2024). Bidang asesmen kepribadian secara komputasional
+telah berkembang pesat dimana kita bisa menilai kepribadian seseorang
+dari sosial media, komunikasi personal, gerakan mata, teks atau tulisan
+umum, sampai foto wajah seseorang (Lukac, 2024). Dibanding metode
+sebelumnya, analisis kepribadian melalui suara bisa dimanfaatkan secara
+efektif untuk beberapa kondisi seperti wawancara kerja atau layanan
+pelanggan karena kepribadian seseorang sangat berpengaruh (Rubio et al.,
+2024).
 
-Dalam konteks pendidikan dan pelatihan, VR menawarkan potensi besar
-untuk meningkatkan efektivitas pembelajaran. Dengan menggunakan VR,
-pengguna dapat mengalami situasi yang sulit atau berbahaya dalam
-lingkungan yang aman dan terkendali. Misalnya, dalam pelatihan medis, VR
-dapat digunakan untuk mensimulasikan prosedur bedah yang kompleks tanpa
-risiko bagi pasien. Demikian pula, dalam pelatihan militer, VR dapat
-mensimulasikan situasi pertempuran yang realistis untuk melatih
-keterampilan dan strategi tanpa risiko cedera.
+Beberapa penelitian terbaru dalam teknologi analisis suara, sudah
+menggunakan teori umum yang diterima secara luas seperti *Big Five
+Personality* dan telah menghasilkan temuan yang lebih jelas seperti
+fitur-fitur akustik tertentu yang berkorelasi dengan kepribadian
+manusia. Misalnya, variasi prosodic seperti nada (*pitch*) dan kecepatan
+bicara bisa menjadi parameter tingkat Ekstraversi seseorang. Eksperimen
+yang telah dilakukan sebelumnya mengklasifikasikan individu dengan sifat
+tinggi dan rendah fitur suara. Orang dengan karakteristik vokal yang
+lantang dan lancer dalam berbicara cenderung dinilai lebih ekstrovert,
+sedangkan frekuensi suara yang monoton atau rendah diklasifikasikan
+dengan sifat kurang percaya diri atau dominasi yang rendah (Rubio et
+al., 2024). Telah dilakukan eksperimen lain yang melibatkan enam penutur
+asli bahasa Inggris dari Kanada yang membacakan teks dengan lima
+kualitas suara yang berbeda. Jenis kualitas suara yang dihasilkan
+seperti suara *Modal* (suara normal), *Creaky* (suara berderit),
+*Breathy* (suara berdesah), *(Hyper-)Nasalization* (suara sengau/nasal),
+dan *Smilling* (suara tersenyum). Eksperimen dilakukan dengan melihat
+dari persepsi pendengar yang menunjukkan bahwa memodifikasi kualitas
+suara dapat merubah kesan kepribadian seseorang. Suara tersenyum
+menghasilkan penilaian positif, sedangkan suara berderit cenderung
+dinilai lebih negative, dan hasil berbeda juga dihasilkan dari kualitas
+suara lainnya. Hal ini menegaskan bahwa suara dapat menjadi isyarat
+penting terkait atribut kepribadian seseorang (Pearsell & Pape, 2023).
 
-Namun, meskipun potensi VR sangat besar, masih terdapat beberapa
-tantangan yang perlu diatasi. Salah satu tantangan utama adalah
-bagaimana menciptakan interaksi manusia-mesin yang alami dan intuitif
-dalam lingkungan VR. Interaksi yang buruk dapat mengurangi efektivitas
-pelatihan dan menyebabkan ketidaknyamanan bagi pengguna. Oleh karena
-itu, penelitian ini bertujuan untuk mengembangkan sistem VR yang dapat
-mensimulasikan interaksi manusia-mesin dengan lebih baik, serta
-menganalisis respons pengguna terhadap berbagai skenario simulasi.
+Penelitian yang dilakukan oleh Lukac (2024) mencoba mengestimasi
+kepribadian seseorang dengan memanfaatkan *convolutional neural network*
+(CNN) dan transformer pra-latih untuk mengekstrak *embedding* akustik
+dari suara (seperti intonasi, nada, ritme) dan linguistic (makna teks
+atau transkrip percakapan). Kedua jenis fitur ini kemudian digabungkan
+dalam model *gradient boosted trees* untuk memprediksi skor *Big Five*
+tiap individu. Hasil yang didapatkan menunjukkan bahwa model tersebut
+mampu memprediksi dengan tingkat akurasi yang cukup baik dengan tingkat
+kesesuaian (*correlation coefficient*) dengan skor *Big Five* berkisar
+antara 0.26 hingga 0.39. Setelah dilakukan koreksi statistic untuk
+menghilangkan "gangguan" dalam data (*disattenuated correlations)*
+terjadi peningkatan di tingkat kesesuaiannya yaitu 0.39 hingga 0.60.
+Penemuan ini membuka potensi penggunaan analisis suara sebagai alat
+untuk mengestimasi kepribadian manusia, dan juga memberikan cara baru
+untuk memahami hubungan antara suara dan kepribadian (Lukac, 2024).
 
-Penelitian ini diharapkan dapat memberikan kontribusi signifikan dalam
-pengembangan teknologi VR, khususnya dalam konteks pendidikan dan
-pelatihan. Dengan menciptakan sistem VR yang lebih efektif dan nyaman,
-diharapkan dapat meningkatkan kualitas pembelajaran dan memberikan
-pengalaman yang lebih mendalam bagi pengguna.
+Berdasarkan penelitian yang telah dilakukan sebelumnya, analisis
+kepribadian melalui data suara semakin diakui manfaatnya dalam berbagai
+aplikasi praktis. Misalnya, dalam konteks rekrutmen dan wawancara kerja,
+kepribadian kandidat dapat diestimasi secara lebih objektif melalui
+rekaman suara wawancara dan bisa membantu pengambil keputusan dalam
+mengurangi penilaian secara subyektif. Di bidang lain seperti interaksi
+manusia dan computer, antarmuka cerdas dapat menyesuaikan responsnya
+berdasarkan kepribadian pengguna dengan deteksi suara, sehingga
+meningkatkan pengalaman pengguna secara personal. Dengan terus
+berkembangnya riset di rentang tahun 2020--2025 ini, pendekatan estimasi
+kepribadian dari data suara diharapkan semakin matang dan siap
+diimplementasikan secara luas. (Rubio et al., 2024)
 
 ## Rumusan Masalah
 
@@ -485,26 +518,27 @@ bisa dilihat pada Tabel ‎3.1. Judul tabel perlu ditulis dalam format
 untuk kata depan seperti 'di', 'ke', 'dari', 'yang', 'untuk', 'kepada',
 dan sebagainya.
 
-  --------------------------------------------------------------------------
-  No   Aktivitas                  MAR   APR   MEI   JUN   JUL    AGU   SEP
-  ---- -------------------------- ----- ----- ----- ----- ------ ----- -----
-  1    Studi literatur                                                 
+  ---------------------------------------------------------------------------
+  No   Aktivitas              MAR   APR   MEI   JUN         JUL   AGU   SEP
+  ---- ---------------------- ----- ----- ----- ----- ----- ----- ----- -----
+  1    Studi literatur                                                  
 
-  2    Empati konteks                                                  
-       permasalahan                                                    
+  2    Empati konteks                                                   
+       permasalahan                                                     
 
-  3    Definisi spesifikasi                                            
-       kebutuhan                                                       
+  3    Definisi spesifikasi                                             
+       kebutuhan                                                        
 
-  4    Ideasi solusi                                                   
+  4    Ideasi solusi                                                    
 
-  5    Pembuatan purwarupa solusi                                      
+  5    Pembuatan purwarupa                                              
+       solusi                                                           
 
-  6    Evaluasi                                                        
+  6    Evaluasi                                                         
 
-  7    Penulisan laporan Tugas                                         
-       Akhir                                                           
-  --------------------------------------------------------------------------
+  7    Penulisan laporan                                                
+       Tugas Akhir                                                      
+  ---------------------------------------------------------------------------
 
   : []{#_Ref193440555 .anchor}Tabel ‎3.1 Lini Masa Pengerjaan Tugas Akhir
 
@@ -512,10 +546,28 @@ dan sebagainya.
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
 
-Soldati, M., Doulis, M., & Csillaghy, A. (2007). SphereViz - Data
-Exploration in a Virtual Reality Environment. *2007 11th International
-Conference Information Visualization (IV '07)*, 680--683.
-https://doi.org/10.1109/IV.2007.105
+Guo, A., Li, Y., Wang, Z., Wu, J., & Xu, B. (2024). Personality
+prediction from task-oriented and open-domain human--machine dialogues.
+Scientific Reports, 14(1), 3868.
+<https://doi.org/10.1038/s41598-024-59702-1>
+
+Lukac, M. (2024). Speech-based personality prediction using deep
+learning with acoustic and linguistic embeddings. Scientific Reports 14,
+30149. <https://doi.org/10.1038/s41598-024-81047-0>
+
+Pearsell, S., & Pape, D. (2023). The effects of different voice
+qualities on the perceived personality of a speaker. *Frontiers in
+Communication*, *7*, 909427. <https://doi.org/10.3389/fcomm.2022.909427>
+
+Marrero, Z. N. K., Gosling, S. D., Pennebaker, J. W., & Harari, G. M.
+(2022). Evaluating voice samples as a potential source of information
+about personality. Acta Psychologica, 230, 103740.
+<https://doi.org/10.1016/j.actpsy.2022.103740>
+
+Rubio, V. J., Aguado, D., Toledano, D. T., & Fernández-Gallego, M. P.
+(2024). Feasibility of big data analytics to assess personality based on
+voice analysis. *Sensors*, *24*(22), 7151.
+<https://doi.org/10.3390/s24227151>
 
  
 
