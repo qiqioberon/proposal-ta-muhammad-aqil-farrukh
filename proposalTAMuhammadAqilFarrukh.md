@@ -4,8 +4,8 @@ height="0.9847222222222223in"}
 
 > **PROPOSAL TUGAS AKHIR -- EF234702**
 >
-> **\<JUDUL PROPOSAL TUGAS AKHIR DITULIS SINGKAT, JELAS, DAN
-> MENGGAMBARKAN TEMA POKOK\>**
+> **Analisis Komparatif Pendekatan Machine Learning dan Transformer
+> Pra-latih untuk Prediksi Kepribadian dari Data Suara**
 >
 > **Muhammad Aqil Farrukh**
 >
@@ -13,15 +13,15 @@ height="0.9847222222222223in"}
 >
 > Dosen Pembimbing
 >
-> \<Nama Pembimbing dan Gelar\>
+> Shintami Chusnul Hidayati, S.Kom., M.Sc., Ph.D
 >
-> NIP \<XXXXXXXXXXXXX\>
+> NIP 1987202012004
 >
 > Dosen Ko-pembimbing
 >
-> \<Nama Pembimbing dan Gelar\>
+> Dini Adni Navastara, S.Kom., M.Sc.
 >
-> NIP XXXXXXXXXXXXX
+> NIP 198510172015042001
 >
 > **Program Studi S-1 Teknik Informatika**
 >
@@ -58,9 +58,9 @@ Fakultas Teknologi Elektro dan Informatika Cerdas
 
 Institut Teknologi Sepuluh Nopember
 
-Oleh: \<**NAMA MAHASISWA**\>
+Oleh: Muhammad Aqil Farrukh
 
-NRP. \<XXXXXXXX\>
+NRP. 5025221158
 
 Disetujui oleh Tim Penguji Proposal Tugas Akhir:
 
