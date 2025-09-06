@@ -298,41 +298,70 @@ Beberapa penelitian terbaru dalam teknologi analisis suara, sudah
 menggunakan teori umum yang diterima secara luas seperti *Big Five
 Personality* dan telah menghasilkan temuan yang lebih jelas seperti
 fitur-fitur akustik tertentu yang berkorelasi dengan kepribadian
-manusia. Misalnya, variasi prosodic seperti nada (*pitch*) dan kecepatan
+manusia. Misalnya, variasi prosodik seperti nada (*pitch*) dan kecepatan
 bicara bisa menjadi parameter tingkat Ekstraversi seseorang. Eksperimen
 yang telah dilakukan sebelumnya mengklasifikasikan individu dengan sifat
 tinggi dan rendah fitur suara. Orang dengan karakteristik vokal yang
-lantang dan lancer dalam berbicara cenderung dinilai lebih ekstrovert,
+lantang dan lancar dalam berbicara cenderung dinilai lebih ekstrovert,
 sedangkan frekuensi suara yang monoton atau rendah diklasifikasikan
 dengan sifat kurang percaya diri atau dominasi yang rendah (Rubio et
-al., 2024). Telah dilakukan eksperimen lain yang melibatkan enam penutur
-asli bahasa Inggris dari Kanada yang membacakan teks dengan lima
-kualitas suara yang berbeda. Jenis kualitas suara yang dihasilkan
-seperti suara *Modal* (suara normal), *Creaky* (suara berderit),
-*Breathy* (suara berdesah), *(Hyper-)Nasalization* (suara sengau/nasal),
-dan *Smilling* (suara tersenyum). Eksperimen dilakukan dengan melihat
-dari persepsi pendengar yang menunjukkan bahwa memodifikasi kualitas
-suara dapat merubah kesan kepribadian seseorang. Suara tersenyum
-menghasilkan penilaian positif, sedangkan suara berderit cenderung
-dinilai lebih negative, dan hasil berbeda juga dihasilkan dari kualitas
-suara lainnya. Hal ini menegaskan bahwa suara dapat menjadi isyarat
-penting terkait atribut kepribadian seseorang (Pearsell & Pape, 2023).
+al., 2024).
 
 Penelitian yang dilakukan oleh Lukac (2024) mencoba mengestimasi
 kepribadian seseorang dengan memanfaatkan *convolutional neural network*
 (CNN) dan transformer pra-latih untuk mengekstrak *embedding* akustik
-dari suara (seperti intonasi, nada, ritme) dan linguistic (makna teks
+dari suara (seperti intonasi, nada, ritme) dan linguistik (makna teks
 atau transkrip percakapan). Kedua jenis fitur ini kemudian digabungkan
 dalam model *gradient boosted trees* untuk memprediksi skor *Big Five*
 tiap individu. Hasil yang didapatkan menunjukkan bahwa model tersebut
 mampu memprediksi dengan tingkat akurasi yang cukup baik dengan tingkat
 kesesuaian (*correlation coefficient*) dengan skor *Big Five* berkisar
-antara 0.26 hingga 0.39. Setelah dilakukan koreksi statistic untuk
+antara 0.26 hingga 0.39. Setelah dilakukan koreksi statistik untuk
 menghilangkan "gangguan" dalam data (*disattenuated correlations)*
 terjadi peningkatan di tingkat kesesuaiannya yaitu 0.39 hingga 0.60.
 Penemuan ini membuka potensi penggunaan analisis suara sebagai alat
 untuk mengestimasi kepribadian manusia, dan juga memberikan cara baru
 untuk memahami hubungan antara suara dan kepribadian (Lukac, 2024).
+
+Dalam domain estimasi kepribadian berdasarkan data suara melalui
+pendekatan tradisional menggunakan fitur-fitur akustik (misalnya
+prosodik, spektral, MFCC, jitter, shimmer) yang dipadukan dengan
+algoritme klasik seperti SVM atau XGBoost telah lama diteliti. Hasil
+yang didapatkan cukup menjanjikan dan berkembang seiring waktu, namun
+akurasinya cenderung terbatas pada tingkat korelasi rendah hingga
+sedang. Berdasarkan studi dari Barchi et al. (2023) dan Rubio et al.
+(2024), telah digunakan metode klasik untuk penelitian sebelumnya,
+teteapi model berbasis fitur *handcrafter* (rekayasa fitur manual)
+semacam ini umumnya hanya mampu menjelaskan sekitar 10%-16% variasi skor
+kepribadian. Temuan tersebut mengindikasikan bahwa estimasi kepribadian
+dari suara memang signifikan secara statistik, tetapi performa masih
+terbatas dan kurang stabil di berbagai konteks atau dataset.
+
+Di sisi lain, pendekatan yang dilakukan dengan transformer pra-latih
+seperti Wav2Vec2 dan HuBERT untuk prediksi kepribadian membuktikan
+performanya lebih baik dari kinerja fitur akustik klasik (Barchi et al.,
+2023). Berdasarkan studi yang telah dilakukan oleh Lukac (2024),
+kelebihan model berbasis transformer ini adalah kemamuannya menangkap
+representasi akustik mendalam dan juga semantik langsung dari sinyal
+suara tanpa memerlukan rekayasa fitur manual. Studi terkini menunjukkan
+bahwa fitur-fitur yang diekstraksi melalui Wav2Vec2 merupakan paling
+informatif untuk estimasi kepribadian, jika dikombinasikan dengan
+embedding transformer dengan fitur akustik tradisional dapat memberikan
+peningkatan kinerja lebih lanjut (Barchi et al., 2023). Tetapi untuk
+mengumpulkan dataset suara natural yang mana lebih representatif,
+memiliki tantangan tersendiri dimana membutuhkan data berukuran besar
+dan daya komputasi tinggi (Lukac, 2024). Selain itu, belum jelas apakah
+pendekatan baru ini benar-benar lebih unggul secara konsisten untuk
+setiap dimensi *Big Five*. Hanya sedikit riset yang secara langsung
+membandingkan metode klasik dengan transformer secara sistematis. Barchi
+et al. (2023) bahkan mencatat bahwa sebelum studi mereka, belum ada
+laporan hasil baseline estimasi kepribadian hanya dari data suara di
+literatur yang mana menunjukkan bahwa ada gap penelitian. Inilah yang
+mendorong penelitian di tugas akhir ini, yakni untuk membandingkan
+pendekatan klasik dan transformer (termasuk menambahkan CNN sebagai
+baseline) secara komprehensif, guna melihat apakah model pra-latih suara
+memang memberikan keunggulan yang konsisten dibanding metode
+konvensional.
 
 Berdasarkan penelitian yang telah dilakukan sebelumnya, analisis
 kepribadian melalui data suara semakin diakui manfaatnya dalam berbagai
@@ -340,7 +369,7 @@ aplikasi praktis. Misalnya, dalam konteks rekrutmen dan wawancara kerja,
 kepribadian kandidat dapat diestimasi secara lebih objektif melalui
 rekaman suara wawancara dan bisa membantu pengambil keputusan dalam
 mengurangi penilaian secara subyektif. Di bidang lain seperti interaksi
-manusia dan computer, antarmuka cerdas dapat menyesuaikan responsnya
+manusia dan komputer, antarmuka cerdas dapat menyesuaikan responsnya
 berdasarkan kepribadian pengguna dengan deteksi suara, sehingga
 meningkatkan pengalaman pengguna secara personal. Dengan terus
 berkembangnya riset di rentang tahun 2020--2025 ini, pendekatan estimasi
@@ -368,11 +397,15 @@ adalah sebagai berikut:
     HuBERT) dibandingkan dengan metode klasik dalam tugas prediksi
     kepribadian berbasis suara?
 
-3.  Bagaimana perbedaan hasil antara pendekatan feature extraction
+3.  Bagaimana performa model berbasis CNN (misalnya CNN akustik)
+    dibandingkan dengan metode klasik dan Transformer pra-latih dalam
+    tugas prediksi kepribadian berbasis suara?
+
+4.  Bagaimana perbedaan hasil antara pendekatan feature extraction
     (frozen embedding) dan fine-tuning pada model Transformer pra-latih
     untuk estimasi kepribadian?
 
-4.  Apakah kombinasi fitur akustik klasik dengan embedding Transformer
+5.  Apakah kombinasi fitur akustik klasik dengan embedding Transformer
     pra-latih dapat meningkatkan akurasi prediksi kepribadian dibanding
     penggunaan salah satu pendekatan saja?
 
@@ -385,19 +418,24 @@ yang ditetapkan adalah sebagai berikut:
     (*Openness, Conscientiousness, Extraversion, Agreeableness,
     Neuroticism*).
 
-2.  Dataset yang digunakan adalah dataset publik yang tersedia dan telah
-    memiliki label kepribadian.
+2.  Dataset yang digunakan adalah dataset publik berlabel Big Five;
+    apabila dataset berbahasa Indonesia tidak tersedia, digunakan
+    dataset berbahasa Inggris (audio-only) dengan dokumentasi pra-proses
+    yang jelas.
 
 3.  Data yang dianalisis hanya berupa suara/audio. Data visual atau
     multimodal lain tidak termasuk dalam lingkup penelitian ini.
 
-4.  Model yang dibandingkan terbatas pada machine learning klasik (SVM,
-    XGBoost) dan Transformer pra-latih (misalnya Wav2Vec2, HuBERT),
-    serta variasinya (frozen vs fine-tuning).
+4.  Model yang dibandingkan mencakup machine learning klasik (SVM,
+    XGBoost), CNN akustik, dan Transformer pra-latih (misalnya Wav2Vec2,
+    HuBERT), serta variasinya (frozen vs fine-tuning).
 
 5.  Evaluasi dilakukan menggunakan metrik kuantitatif (Pearson
     correlation, RMSE, MAE) dengan metode cross-validation, tanpa
     melibatkan uji persepsi manusia.
+
+6.  Split evaluasi bersifat speaker-independent (tidak ada pembicara
+    yang sama antara train/valid/test) untuk mencegah data leakage.
 
 ## Tujuan
 
@@ -412,13 +450,17 @@ adalah:
 2.  Menganalisis efektivitas model Transformer pra-latih (Wav2Vec2,
     HuBERT) untuk prediksi kepribadian berbasis suara.
 
-3.  Membandingkan hasil antara feature extraction (frozen) dan
+3.  Mengevaluasi efektivitas CNN dalam memprediksi kepribadian berbasis
+    suara, serta membandingkannya dengan metode klasik dan Transformer
+    pra-latih.
+
+4.  Membandingkan hasil antara feature extraction (frozen) dan
     fine-tuning pada model Transformer pra-latih.
 
-4.  Mengkaji potensi fusion antara fitur akustik klasik dan embedding
+5.  Mengkaji potensi fusion antara fitur akustik klasik dan embedding
     Transformer dalam meningkatkan akurasi prediksi.
 
-5.  Mengidentifikasi model terbaik yang dapat digunakan sebagai acuan
+6.  Mengidentifikasi model terbaik yang dapat digunakan sebagai acuan
     untuk penelitian lebih lanjut dalam bidang personality computing
     berbasis suara.
 
@@ -459,7 +501,7 @@ praktis, maupun sosial.
     dan privasi.
 
 3.  Mendorong inovasi riset interdisipliner di Indonesia dalam bidang
-    psikologi komputasional dan kecerdasan buatan..
+    psikologi komputasional dan kecerdasan buatan.
 
 *Halaman ini sengaja dikosongkan.*
 
@@ -525,6 +567,11 @@ dan sebagainya.
 *Halaman ini sengaja dikosongkan.*
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
+
+Barchi, R., Pepino, L., Gauder, L., Estienne, L., Meza, M., Riera, P.,
+Ferrer, L. (2023) Apparent personality prediction from speech using
+expert features and wav2vec 2.0. Proc. SMM23, Workshop on Speech, Music
+and Mind 2023, 21-25, doi: <https://doi.org/10.21437/SMM.2023-5>
 
 Lukac, M. (2024). Speech-based personality prediction using deep
 learning with acoustic and linguistic embeddings. Scientific Reports 14,
