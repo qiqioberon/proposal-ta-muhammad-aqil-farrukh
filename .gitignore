@@ -1,0 +1,22 @@
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Data & model artifacts
+/data/
+/models/
+/code/experiments/*.ckpt
+code/experiments/**/artifacts/
+*.wav
+*.mp3
+*.flac
+
+# Logs
+mlruns/
+wandb/
+logs/
+
+# OS/editor
+.DS_Store
+Thumbs.db
