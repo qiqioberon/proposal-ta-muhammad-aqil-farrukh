@@ -8,7 +8,7 @@ Repositori ini berisi seluruh dokumen, catatan riset, serta kode yang digunakan 
 
 ## 📂 Struktur Folder
 
-```
+```md
 catatan-riset/            # Catatan progres riset dalam format Markdown
 ├─ dataset/               # Audit dataset (FI, FI-V2, ringkasan)
 ├─ metodologi.md          # Draft metodologi penelitian
@@ -61,21 +61,25 @@ sumber-jurnal-dan-riset/  # Referensi literatur & screenshot
    ```bash
    pip install -r code/requirement.txt
    ```
+
 3. Jalankan preprocessing (contoh dengan config FI baseline):
 
    ```bash
    python code/scripts/etl.py --config code/configs/fi-baseline.yaml
    ```
+
 4. Training:
 
    ```bash
    python code/scripts/train.py --config code/configs/fi-baseline.yaml
    ```
+
 5. Evaluasi:
 
    ```bash
    python code/scripts/evaluate.py --config code/configs/fi-baseline.yaml
    ```
+
 6. Inference:
 
    ```bash
@@ -86,20 +90,31 @@ sumber-jurnal-dan-riset/  # Referensi literatur & screenshot
 
 ## 📌 Status Progres
 
-* [x] Struktur repo & dokumentasi awal
-* [x] Audit dataset FI (deep-dive)
-* [ ] Audit dataset FI-V2
-* [ ] Ringkasan perbandingan dataset
-* [ ] Rencana ETL final
-* [ ] Implementasi baseline model
-* [ ] Evaluasi & analisis hasil
+### 📑 Dokumen Resmi
 
+- [x] Penyusunan Bab 1 (draft awal selesai, format .docx & .md)
+- [ ] Penyusunan Bab 2 (Tinjauan Pustaka) → sedang pengumpulan literatur
+- [ ] Penyusunan Bab 3 (Metodologi) → menunggu finalisasi rencana ETL & model
+- [ ] Laporan TA final (akan disusun setelah eksperimen utama selesai)
+
+### 🎙️ Dataset
+
+- [x] Struktur repo & dokumentasi awal (catatan-riset, code, data)
+- [x] Audit dataset FI (ChaLearn First Impressions) → **FULL deep-dive** selesai
+- [ ] Audit dataset FI-V2 (First Impressions V2) → **FULL deep-dive** dalam antrean
+- [ ] Ringkasan perbandingan FI vs FI-V2 (akses, lisensi, ukuran, struktur, bahasa)
+- [ ] Audit dataset SPC (Speaker Personality Corpus) → **LIGHT deep-dive** (opsional)
+- [ ] Audit dataset UDIVA (Universal Divergent Audio-Visual) → **SELECTIVE deep-dive** khusus audio-only extraction
+- [ ] Rencana ETL final (pipeline ekstraksi audio, segmentasi, normalisasi)
+- [ ] Implementasi baseline model (ekstraksi fitur MFCC / wav2vec2 + regresi Big Five)
+- [ ] Evaluasi & analisis hasil (cross-validation, metrik MAE/RMSE, korelasi)
+  
 ---
 
 ## 📚 Lisensi & Hak Akses Dataset
 
-* Dataset yang digunakan (FI, FI-V2, dll.) tunduk pada lisensi masing-masing penyedia.
-* Dataset **tidak disertakan dalam repo ini**. Untuk akses, silakan mengacu ke situs resmi penyedia dataset.
+- Dataset yang digunakan (FI, FI-V2, dll.) tunduk pada lisensi masing-masing penyedia.
+- Dataset **tidak disertakan dalam repo ini**. Untuk akses, silakan mengacu ke situs resmi penyedia dataset.
 
 ---
 
