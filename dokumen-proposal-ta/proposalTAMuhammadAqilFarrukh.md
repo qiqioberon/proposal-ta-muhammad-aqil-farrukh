@@ -407,7 +407,7 @@ adalah sebagai berikut:
 
 5.  Apakah kombinasi fitur akustik klasik dengan embedding Transformer
     pra-latih dapat meningkatkan akurasi prediksi kepribadian dibanding
-    penggunaan salah satu pendekatan saja?
+    penggunaan salah satu pendekatan saja? (dihapus // digabung)
 
 ## Batasan Masalah
 
