@@ -251,7 +251,7 @@ penelitian pada tahun 1930-an sudah berusaha mengaitkan ciri-ciri vokal
 dengan kepribadian individu. Meskipun demikian, temuan di era awal
 tersebut cenderung belum konsisten, sehingga keterkaitan antara vokal
 dengan kepribadian manusia tetap menjadi teka-teki ilmiah selama
-beberapa dekade (Lukac, 2024; Rubio et al., 2024)
+beberapa dekade (Lukac, 2024; Rubio et al., 2024).
 
 Perkembangan teknologi dalam analisis suara dan generalisasi dari
 analisis *big data* menciptakan kesempatan besar untuk mengestimasi
@@ -365,8 +365,8 @@ yang ditetapkan adalah sebagai berikut:
 
 2.  Dataset yang digunakan adalah dataset publik berlabel Big Five pada
     skenario audio-only dengan dokumentasi pra-pemrosesan yang jelas;
-    penelitian dapat menggunakan dataset berbahasa Inggris apabila
-    dataset berbahasa Indonesia yang setara tidak tersedia.
+    apabila dataset berbahasa Indonesia yang setara tidak tersedia,
+    digunakan dataset berbahasa Inggris.
 
 3.  Data yang dianalisis hanya berupa suara/audio. Data visual atau
     multimodal lain tidak termasuk dalam lingkup penelitian ini.
@@ -406,34 +406,42 @@ praktis, maupun sosial.
 
 ### Manfaat Teoritis
 
-1.  Menambah wawasan dan pengetahuan dalam bidang computational
-    personality assessment berbasis suara.
+1.  Menambah wawasan dan referensi dalam bidang computational
+    personality assessment berbasis suara (audio-only) menggunakan model
+    Transformer pra-latih.
 
-2.  Memberikan kontribusi pada literatur mengenai perbandingan performa
-    model klasik dan Transformer pra-latih dalam analisis kepribadian.
+2.  Memberikan kontribusi pada literatur terkait pengaruh pemilihan
+    backbone pra-latih serta strategi pelatihan (frozen feature
+    extraction vs fine-tuning) terhadap performa prediksi Big Five.
 
-3.  Mengidentifikasi faktor teknis (fitur, model, strategi training)
-    yang memengaruhi akurasi prediksi kepribadian berbasis audio.
+3.  Menyediakan hasil evaluasi yang dapat menjadi acuan untuk memahami
+    stabilitas performa model pada tiap dimensi Big Five dalam skenario
+    evaluasi speaker-independent.
 
 ### Manfaat Praktis
 
-1.  Memberikan acuan model AI yang efektif untuk prediksi kepribadian
-    berbasis suara.
+1.  Menyediakan rancangan pipeline end-to-end (pra-pemrosesan hingga
+    evaluasi) yang dapat direplikasi untuk membangun sistem estimasi
+    kepribadian berbasis audio-only.
 
-2.  Memberikan rekomendasi pendekatan (klasik vs Transformer pra-latih)
-    yang lebih tepat untuk digunakan pada aplikasi nyata.
+2.  Memberikan rekomendasi konfigurasi model (pilihan backbone dan
+    strategi pelatihan) yang efektif dan realistis untuk diterapkan pada
+    kebutuhan dunia nyata, dengan mempertimbangkan performa dan
+    keterbatasan komputasi.
 
-3.  Menyediakan kerangka eksperimen yang dapat direplikasi oleh peneliti
-    lain atau pengembang sistem AI.
+3.  Menjadi dasar pengembangan sistem pendukung keputusan pada aplikasi
+    seperti rekrutmen, layanan pelanggan, dan interaksi
+    manusia--komputer, dengan pendekatan yang terukur dan dapat
+    dipertanggungjawabkan.
 
 ### Manfaat Sosial
 
-1.  Mendukung pengembangan aplikasi AI yang dapat memahami karakteristik
-    individu secara lebih personal melalui suara.
+1.  Mendorong pemanfaatan teknologi AI yang lebih personal dan adaptif
+    melalui pemahaman karakteristik pengguna berbasis suara.
 
-2.  Membuka peluang pemanfaatan teknologi ini di bidang rekrutmen,
-    pendidikan, dan layanan pelanggan dengan tetap memperhatikan etika
-    dan privasi.
+2.  Membantu meningkatkan objektivitas dalam proses penilaian tertentu
+    (misalnya wawancara) dengan tetap menekankan batasan interpretasi
+    dan kebutuhan penggunaan secara bertanggung jawab.
 
 3.  Mendorong inovasi riset interdisipliner di Indonesia dalam bidang
     psikologi komputasional dan kecerdasan buatan.
