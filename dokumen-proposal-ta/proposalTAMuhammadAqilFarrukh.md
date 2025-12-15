@@ -2,38 +2,9 @@
 generated](media/image1.png){width="0.9847222222222223in"
 height="0.9847222222222223in"}
 
-> **PROPOSAL TUGAS AKHIR -- EF234702**
->
-> **Analisis Komparatif Pendekatan Machine Learning dan Transformer
-> Pra-latih untuk Prediksi Kepribadian dari Data Suara**
->
-> **Muhammad Aqil Farrukh**
->
-> NRP 5025221158
->
-> Dosen Pembimbing
->
-> Shintami Chusnul Hidayati, S.Kom., M.Sc., Ph.D
->
-> NIP 1987202012004
->
-> Dosen Ko-pembimbing
->
-> Dini Adni Navastara, S.Kom., M.Sc.
->
-> NIP 198510172015042001
->
-> **Program Studi S-1 Teknik Informatika**
->
-> Departemen Teknik Informatika
->
-> Fakultas Teknologi Elektro dan Informatika Cerdas
->
-> Institut Teknologi Sepuluh Nopember
->
-> Surabaya
->
-> 2025
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 *Halaman ini sengaja dikosongkan.*
 
@@ -307,61 +278,44 @@ sedangkan frekuensi suara yang monoton atau rendah diklasifikasikan
 dengan sifat kurang percaya diri atau dominasi yang rendah (Rubio et
 al., 2024).
 
-Penelitian yang dilakukan oleh Lukac (2024) mencoba mengestimasi
-kepribadian seseorang dengan memanfaatkan *convolutional neural network*
-(CNN) dan transformer pra-latih untuk mengekstrak *embedding* akustik
-dari suara (seperti intonasi, nada, ritme) dan linguistik (makna teks
-atau transkrip percakapan). Kedua jenis fitur ini kemudian digabungkan
-dalam model *gradient boosted trees* untuk memprediksi skor *Big Five*
-tiap individu. Hasil yang didapatkan menunjukkan bahwa model tersebut
-mampu memprediksi dengan tingkat akurasi yang cukup baik dengan tingkat
-kesesuaian (*correlation coefficient*) dengan skor *Big Five* berkisar
-antara 0.26 hingga 0.39. Setelah dilakukan koreksi statistik untuk
-menghilangkan "gangguan" dalam data (*disattenuated correlations)*
-terjadi peningkatan di tingkat kesesuaiannya yaitu 0.39 hingga 0.60.
-Penemuan ini membuka potensi penggunaan analisis suara sebagai alat
-untuk mengestimasi kepribadian manusia, dan juga memberikan cara baru
-untuk memahami hubungan antara suara dan kepribadian (Lukac, 2024).
+Penelitian oleh Lukac (2024) menunjukkan bahwa representasi yang
+dipelajari melalui model deep learning modern dapat membantu estimasi
+kepribadian dengan kinerja yang cukup baik. Studi tersebut memanfaatkan
+representasi akustik dari suara serta representasi linguistik dari
+transkrip, dan melaporkan tingkat kesesuaian (correlation coefficient)
+yang berada pada rentang menengah. Temuan ini menguatkan potensi
+pemodelan berbasis representasi (representation learning) untuk
+personality computing. Namun, karena banyak studi menggabungkan berbagai
+modalitas, masih diperlukan kajian yang lebih terfokus untuk memahami
+kontribusi sinyal suara secara murni (audio-only) terhadap estimasi Big
+Five.
 
-Dalam domain estimasi kepribadian berdasarkan data suara melalui
-pendekatan tradisional menggunakan fitur-fitur akustik (misalnya
-prosodik, spektral, MFCC, jitter, shimmer) yang dipadukan dengan
-algoritme klasik seperti SVM atau XGBoost telah lama diteliti. Hasil
-yang didapatkan cukup menjanjikan dan berkembang seiring waktu, namun
-akurasinya cenderung terbatas pada tingkat korelasi rendah hingga
-sedang. Berdasarkan studi dari Barchi et al. (2023) dan Rubio et al.
-(2024), telah digunakan metode klasik untuk penelitian sebelumnya,
-teteapi model berbasis fitur *handcrafter* (rekayasa fitur manual)
-semacam ini umumnya hanya mampu menjelaskan sekitar 10%-16% variasi skor
-kepribadian. Temuan tersebut mengindikasikan bahwa estimasi kepribadian
-dari suara memang signifikan secara statistik, tetapi performa masih
-terbatas dan kurang stabil di berbagai konteks atau dataset.
+Secara historis, estimasi kepribadian dari suara banyak dilakukan
+melalui pendekatan berbasis fitur akustik handcrafted (misalnya
+prosodik, spektral, MFCC, jitter, shimmer) yang kemudian dipadukan
+dengan algoritme prediksi. Pendekatan ini membantu membuktikan bahwa
+sinyal vokal memiliki keterkaitan dengan dimensi kepribadian tertentu,
+meskipun performanya sering dilaporkan berada pada tingkat rendah hingga
+sedang dan dapat bervariasi antar dataset maupun konteks (Barchi et al.,
+2023; Rubio et al., 2024). Perkembangan terkini kemudian bergeser ke
+penggunaan model pra-latih berbasis Transformer yang mampu mempelajari
+representasi dari sinyal audio secara lebih kaya tanpa bergantung pada
+rekayasa fitur manual.
 
-Di sisi lain, pendekatan yang dilakukan dengan transformer pra-latih
-seperti Wav2Vec2 dan HuBERT untuk prediksi kepribadian membuktikan
-performanya lebih baik dari kinerja fitur akustik klasik (Barchi et al.,
-2023). Berdasarkan studi yang telah dilakukan oleh Lukac (2024),
-kelebihan model berbasis transformer ini adalah kemamuannya menangkap
-representasi akustik mendalam dan juga semantik langsung dari sinyal
-suara tanpa memerlukan rekayasa fitur manual. Studi terkini menunjukkan
-bahwa fitur-fitur yang diekstraksi melalui Wav2Vec2 merupakan paling
-informatif untuk estimasi kepribadian, jika dikombinasikan dengan
-embedding transformer dengan fitur akustik tradisional dapat memberikan
-peningkatan kinerja lebih lanjut (Barchi et al., 2023). Tetapi untuk
-mengumpulkan dataset suara natural yang mana lebih representatif,
-memiliki tantangan tersendiri dimana membutuhkan data berukuran besar
-dan daya komputasi tinggi (Lukac, 2024). Selain itu, belum jelas apakah
-pendekatan baru ini benar-benar lebih unggul secara konsisten untuk
-setiap dimensi *Big Five*. Hanya sedikit riset yang secara langsung
-membandingkan metode klasik dengan transformer secara sistematis. Barchi
-et al. (2023) bahkan mencatat bahwa sebelum studi mereka, belum ada
-laporan hasil baseline estimasi kepribadian hanya dari data suara di
-literatur yang mana menunjukkan bahwa ada gap penelitian. Inilah yang
-mendorong penelitian di tugas akhir ini, yakni untuk membandingkan
-pendekatan klasik dan transformer (termasuk menambahkan CNN sebagai
-baseline) secara komprehensif, guna melihat apakah model pra-latih suara
-memang memberikan keunggulan yang konsisten dibanding metode
-konvensional.
+Di sisi lain, pendekatan berbasis Transformer pra-latih seperti Wav2Vec2
+dan HuBERT/WavLM menunjukkan potensi yang lebih kuat karena mampu
+menangkap representasi akustik yang kaya langsung dari sinyal suara
+tanpa rekayasa fitur manual (Barchi et al., 2023; Lukac, 2024). Meski
+demikian, masih terdapat pertanyaan yang belum sepenuhnya terjawab,
+seperti strategi pelatihan mana yang paling efektif untuk tugas estimasi
+Big Five dari audio-only, termasuk perbandingan antara penggunaan
+embedding beku (frozen feature extraction) dan fine-tuning, serta
+pengaruh pemilihan backbone pra-latih terhadap kinerja pada setiap
+dimensi Big Five. Oleh karena itu, penelitian tugas akhir ini berfokus
+pada evaluasi dan analisis komparatif beberapa model Transformer
+pra-latih beserta strategi pelatihannya (frozen vs fine-tuning) untuk
+memperoleh konfigurasi yang paling stabil dan unggul pada prediksi
+kepribadian berbasis suara.
 
 Berdasarkan penelitian yang telah dilakukan sebelumnya, analisis
 kepribadian melalui data suara semakin diakui manfaatnya dalam berbagai
@@ -379,27 +333,25 @@ diimplementasikan secara luas. (Rubio et al., 2024)
 ## Rumusan Masalah
 
 Penelitian mengenai estimasi kepribadian berbasis suara berkembang pesat
-dengan adanya kemajuan machine learning dan deep learning. Akan tetapi,
-masih terdapat kesenjangan dalam menentukan pendekatan mana yang paling
-efektif antara metode berbasis fitur akustik klasik dan model berbasis
-Transformer pra-latih. Selain itu, belum banyak penelitian yang secara
-sistematis membandingkan performa model klasik dengan model pra-latih
-pada data suara untuk prediksi kepribadian Big Five.
+seiring hadirnya model Transformer pra-latih untuk representasi audio.
+Namun, masih terdapat kesenjangan dalam menentukan konfigurasi yang
+paling efektif, terutama terkait pemilihan backbone pra-latih dan
+strategi pelatihan (frozen feature extraction vs fine-tuning) untuk
+prediksi kepribadian Big Five pada skenario audio-only. Berdasarkan
+latar belakang tersebut, rumusan masalah penelitian ini adalah sebagai
+berikut:
 
-Berdasarkan latar belakang tersebut, rumusan masalah penelitian ini
-adalah sebagai berikut:
+1.  Bagaimana performa beberapa backbone Transformer pra-latih (misalnya
+    Wav2Vec2, HuBERT, WavLM) untuk prediksi kepribadian Big Five
+    berbasis audio-only?
 
-1.  Bagaimana performa model berbasis fitur akustik klasik dengan metode
-    machine learning (misalnya SVM, XGBoost) dalam melakukan prediksi
-    kepribadian dari data suara?
+2.  Bagaimana perbedaan kinerja antara pendekatan **frozen feature
+    extraction** dan **fine-tuning** pada model Transformer pra-latih
+    untuk estimasi kepribadian?
 
-2.  Bagaimana performa model Transformer pra-latih (misalnya Wav2Vec2,
-    HuBERT) dibandingkan dengan metode klasik dalam tugas prediksi
-    kepribadian berbasis suara?
-
-3.  Bagaimana performa model berbasis CNN (misalnya CNN akustik)
-    dibandingkan dengan metode klasik dan Transformer pra-latih dalam
-    tugas prediksi kepribadian berbasis suara?
+3.  Bagaimana pengaruh desain pooling/aggregation (misalnya mean
+    pooling, attention pooling) dan prediction head (misalnya MLP
+    regressor) terhadap performa prediksi Big Five?
 
 4.  Bagaimana perbedaan hasil antara pendekatan feature extraction
     (frozen embedding) dan fine-tuning pada model Transformer pra-latih
@@ -512,9 +464,9 @@ praktis, maupun sosial.
 Lorem ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
 ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
 ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum sebagaimana
-tampak pada Gambar ‎2.1. Keterangan gambar (*figure caption*) ditulis
-dalam bentuk kalimat biasa. Jadi yang dikapitalkan hanya huruf pertama
-pada kata pertama di keterangan tersebut.
+tampak pada [Gambar ‎2.1](#_Ref193439921). Keterangan gambar (*figure
+caption*) ditulis dalam bentuk kalimat biasa. Jadi yang dikapitalkan
+hanya huruf pertama pada kata pertama di keterangan tersebut.
 
 []{#_Ref193439921 .anchor}Gambar ‎2.1 Kotak berwarna biru
 
@@ -535,10 +487,10 @@ VR mampu menghasilkan data yang beragam.
 
 Penelitian Tugas Akhir ini akan dilaksanakan selama enam bulan dari
 Maret sampai dengan September 2024. Lini masa pengerjaan Tugas Akhir
-bisa dilihat pada Tabel ‎3.1. Judul tabel perlu ditulis dalam format
-*Title Case*, yang berarti setiap kata diawali huruf kapital, kecuali
-untuk kata depan seperti 'di', 'ke', 'dari', 'yang', 'untuk', 'kepada',
-dan sebagainya.
+bisa dilihat pada [Tabel ‎3.1](#_Ref193440555). Judul tabel perlu ditulis
+dalam format *Title Case*, yang berarti setiap kata diawali huruf
+kapital, kecuali untuk kata depan seperti 'di', 'ke', 'dari', 'yang',
+'untuk', 'kepada', dan sebagainya.
 
   ---------------------------------------------------------------------------
   No   Aktivitas              MAR   APR   MEI   JUN         JUL   AGU   SEP
