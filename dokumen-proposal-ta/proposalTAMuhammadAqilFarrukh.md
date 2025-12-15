@@ -251,7 +251,7 @@ penelitian pada tahun 1930-an sudah berusaha mengaitkan ciri-ciri vokal
 dengan kepribadian individu. Meskipun demikian, temuan di era awal
 tersebut cenderung belum konsisten, sehingga keterkaitan antara vokal
 dengan kepribadian manusia tetap menjadi teka-teki ilmiah selama
-beberapa dekade (Lukac, 2024; Rubio et al., 2024).
+beberapa dekade (Lukac, 2024; Rubio et al., 2024)
 
 Perkembangan teknologi dalam analisis suara dan generalisasi dari
 analisis *big data* menciptakan kesempatan besar untuk mengestimasi
@@ -328,7 +328,7 @@ berdasarkan kepribadian pengguna dengan deteksi suara, sehingga
 meningkatkan pengalaman pengguna secara personal. Dengan terus
 berkembangnya riset di rentang tahun 2020--2025 ini, pendekatan estimasi
 kepribadian dari data suara diharapkan semakin matang dan siap
-diimplementasikan secara luas. (Rubio et al., 2024)
+diimplementasikan secara luas (Rubio et al., 2024).
 
 ## Rumusan Masalah
 
@@ -341,25 +341,18 @@ prediksi kepribadian Big Five pada skenario audio-only. Berdasarkan
 latar belakang tersebut, rumusan masalah penelitian ini adalah sebagai
 berikut:
 
-1.  Bagaimana performa beberapa backbone Transformer pra-latih (misalnya
-    Wav2Vec2, HuBERT, WavLM) untuk prediksi kepribadian Big Five
-    berbasis audio-only?
+1.  Bagaimana merancang dan membangun pipeline estimasi kepribadian Big
+    Five berbasis *audio-only* menggunakan model Transformer pra-latih,
+    termasuk pra-pemrosesan data?
 
-2.  Bagaimana perbedaan kinerja antara pendekatan **frozen feature
-    extraction** dan **fine-tuning** pada model Transformer pra-latih
-    untuk estimasi kepribadian?
+2.  Bagaimana performa model Transformer pra-latih dalam memprediksi Big
+    Five pada skenario audio-only berdasarkan metrik evaluasi (misalnya
+    MAE/RMSE, Pearson correlation, dan R^2^)?
 
-3.  Bagaimana pengaruh desain pooling/aggregation (misalnya mean
-    pooling, attention pooling) dan prediction head (misalnya MLP
-    regressor) terhadap performa prediksi Big Five?
-
-4.  Bagaimana perbedaan hasil antara pendekatan feature extraction
-    (frozen embedding) dan fine-tuning pada model Transformer pra-latih
-    untuk estimasi kepribadian?
-
-5.  Apakah kombinasi fitur akustik klasik dengan embedding Transformer
-    pra-latih dapat meningkatkan akurasi prediksi kepribadian dibanding
-    penggunaan salah satu pendekatan saja? (dihapus // digabung)
+3.  Bagaimana perbandingan performa antar backbone Transformer pra-latih
+    dan antar strategi pelatihan (frozen feature extraction vs
+    fine-tuning) untuk menentukan konfigurasi yang paling stabil dan
+    unggul?
 
 ## Batasan Masalah
 
@@ -370,21 +363,23 @@ yang ditetapkan adalah sebagai berikut:
     (*Openness, Conscientiousness, Extraversion, Agreeableness,
     Neuroticism*).
 
-2.  Dataset yang digunakan adalah dataset publik berlabel Big Five;
-    apabila dataset berbahasa Indonesia tidak tersedia, digunakan
-    dataset berbahasa Inggris (audio-only) dengan dokumentasi pra-proses
-    yang jelas.
+2.  Dataset yang digunakan adalah dataset publik berlabel Big Five pada
+    skenario audio-only dengan dokumentasi pra-pemrosesan yang jelas;
+    penelitian dapat menggunakan dataset berbahasa Inggris apabila
+    dataset berbahasa Indonesia yang setara tidak tersedia.
 
 3.  Data yang dianalisis hanya berupa suara/audio. Data visual atau
     multimodal lain tidak termasuk dalam lingkup penelitian ini.
 
-4.  Model yang dibandingkan mencakup machine learning klasik (SVM,
-    XGBoost), CNN akustik, dan Transformer pra-latih (misalnya Wav2Vec2,
-    HuBERT), serta variasinya (frozen vs fine-tuning).
+4.  Model yang dievaluasi mencakup beberapa Transformer pra-latih untuk
+    representasi audio (misalnya Wav2Vec2, HuBERT, WavLM) beserta
+    variasi strategi pelatihan (frozen feature extraction vs
+    fine-tuning).
 
-5.  Evaluasi dilakukan menggunakan metrik kuantitatif (Pearson
-    correlation, RMSE, MAE) dengan metode cross-validation, tanpa
-    melibatkan uji persepsi manusia.
+5.  Evaluasi dilakukan menggunakan metrik kuantitatif (MAE dan RMSE
+    sebagai error, korelasi Pearson (r) sebagai keselarasan prediksi,
+    serta R² sebagai proporsi variansi yang dijelaskan) dengan metode
+    cross-validation, tanpa melibatkan uji persepsi manusia.
 
 6.  Split evaluasi bersifat speaker-independent (tidak ada pembicara
     yang sama antara train/valid/test) untuk mencegah data leakage.
@@ -392,29 +387,17 @@ yang ditetapkan adalah sebagai berikut:
 ## Tujuan
 
 Tujuan penelitian ini adalah untuk melakukan analisis komparatif
-pendekatan machine learning klasik dan Transformer pra-latih dalam
-estimasi kepribadian berbasis suara. Tujuan spesifik dari penelitian ini
-adalah:
+pendekatan machine learning Transformer pra-latih dalam estimasi
+kepribadian berbasis suara. Tujuan spesifik dari penelitian ini adalah:
 
-1.  Mengevaluasi performa model berbasis fitur akustik klasik dengan
-    metode machine learning (SVM, XGBoost).
+1.  Membangun pipeline end-to-end estimasi Big Five berbasis audio-only
+    menggunakan Transformer pra-latih.
 
-2.  Menganalisis efektivitas model Transformer pra-latih (Wav2Vec2,
-    HuBERT) untuk prediksi kepribadian berbasis suara.
+2.  Mengevaluasi performa model Transformer pra-latih pada prediksi Big
+    Five menggunakan metrik kuantitatif yang ditetapkan.
 
-3.  Mengevaluasi efektivitas CNN dalam memprediksi kepribadian berbasis
-    suara, serta membandingkannya dengan metode klasik dan Transformer
-    pra-latih.
-
-4.  Membandingkan hasil antara feature extraction (frozen) dan
-    fine-tuning pada model Transformer pra-latih.
-
-5.  Mengkaji potensi fusion antara fitur akustik klasik dan embedding
-    Transformer dalam meningkatkan akurasi prediksi.
-
-6.  Mengidentifikasi model terbaik yang dapat digunakan sebagai acuan
-    untuk penelitian lebih lanjut dalam bidang personality computing
-    berbasis suara.
+3.  Membandingkan backbone dan strategi pelatihan (frozen vs
+    fine-tuning) untuk memperoleh konfigurasi terbaik dan paling stabil.
 
 ## Manfaat
 
@@ -520,23 +503,18 @@ kapital, kecuali untuk kata depan seperti 'di', 'ke', 'dari', 'yang',
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
 
-Barchi, R., Pepino, L., Gauder, L., Estienne, L., Meza, M., Riera, P.,
-Ferrer, L. (2023) Apparent personality prediction from speech using
-expert features and wav2vec 2.0. Proc. SMM23, Workshop on Speech, Music
-and Mind 2023, 21-25, doi: <https://doi.org/10.21437/SMM.2023-5>
-
 Lukac, M. (2024). Speech-based personality prediction using deep
-learning with acoustic and linguistic embeddings. Scientific Reports 14,
-30149. <https://doi.org/10.1038/s41598-024-81047-0>
-
-Pearsell, S., & Pape, D. (2023). The effects of different voice
-qualities on the perceived personality of a speaker. *Frontiers in
-Communication*, *7*, 909427. <https://doi.org/10.3389/fcomm.2022.909427>
+learning with acoustic and linguistic embeddings. *Scientific Reports*,
+*14*(1). https://doi.org/10.1038/s41598-024-81047-0
 
 Rubio, V. J., Aguado, D., Toledano, D. T., & Fernández-Gallego, M. P.
-(2024). Feasibility of big data analytics to assess personality based on
-voice analysis. *Sensors*, *24*(22), 7151.
-<https://doi.org/10.3390/s24227151>
+(2024). Feasibility of Big Data Analytics to Assess Personality Based on
+Voice Analysis. *Sensors*, *24*(22). https://doi.org/10.3390/s24227151
+
+Soldati, M., Doulis, M., & Csillaghy, A. (2007). SphereViz - Data
+Exploration in a Virtual Reality Environment. *2007 11th International
+Conference Information Visualization (IV '07)*, 680--683.
+https://doi.org/10.1109/IV.2007.105
 
  
 
