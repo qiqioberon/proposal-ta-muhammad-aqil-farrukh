@@ -244,91 +244,89 @@ Training, Education.***
 ## Latar Belakang
 
 Suara manusia tidak hanya menyampaikan isi pesan, tetapi juga
-merefleksikan identitas dari penutur. Identitas yang dimaksud berupa
-usia, aksen budaya, hingga kepribadian dari penutur (Lukac, 2024).
-Gagasan ini sebenarnya telah dikemukakan sejak awal abad ke-20, dimana
-penelitian pada tahun 1930-an sudah berusaha mengaitkan ciri-ciri vokal
-dengan kepribadian individu. Meskipun demikian, temuan di era awal
-tersebut cenderung belum konsisten, sehingga keterkaitan antara vokal
-dengan kepribadian manusia tetap menjadi teka-teki ilmiah selama
-beberapa dekade (Lukac, 2024; Rubio et al., 2024).
+merefleksikan identitas dari penutur. Identitas ini seperti usia, aksen
+budaya, hingga kepribadian dari penutur (Lukac, 2024). Sejak 1930-an,
+sejumlah penelitian sudah mencoba mengaitkan ciri-ciri vokal dengan
+kepribadian individu. Meskipun demikian, temuan di era awal tersebut
+cenderung belum konsisten, sehingga keterkaitan antara vokal dengan
+kepribadian manusia masih beragam selama beberapa dekade (Lukac, 2024;
+Rubio et al., 2024).
 
-Perkembangan teknologi dalam analisis suara dan generalisasi dari
-analisis *big data* menciptakan kesempatan besar untuk mengestimasi
-kepribadian manusia berdasarkan kekuatan fitur dalam suara manusia
-(Rubio et al., 2024). Bidang asesmen kepribadian secara komputasional
-telah berkembang pesat dimana kita bisa menilai kepribadian seseorang
-dari sosial media, komunikasi personal, gerakan mata, teks atau tulisan
-umum, sampai foto wajah seseorang (Lukac, 2024). Dibanding metode
-sebelumnya, analisis kepribadian melalui suara bisa dimanfaatkan secara
-efektif untuk beberapa kondisi seperti wawancara kerja atau layanan
-pelanggan karena kepribadian seseorang sangat berpengaruh (Rubio et al.,
-2024).
+Perkembangan teknologi dalam analisis suara dan meluasnya pendekatan
+*big data* menciptakan kesempatan untuk menguji sejauh mana fitur-fitur
+suara dapat memprediksi kepribadian manusia (Rubio et al., 2024). Selain
+berbasis suara, asesmen kepribadian komputasional juga memanfaatkan
+beragam sumber data, mulai dari jejak digital media sosial, komunikasi
+personal, teks, pergerakan mata, hingga citra wajah (Lukac, 2024). Dalam
+studi Rubio et al. (2024), pendekatan berbasis suara didiskusikan untuk
+skenario seleksi personel.
 
-Beberapa penelitian terbaru dalam teknologi analisis suara, sudah
-menggunakan teori umum yang diterima secara luas seperti *Big Five
-Personality* dan telah menghasilkan temuan yang lebih jelas seperti
-fitur-fitur akustik tertentu yang berkorelasi dengan kepribadian
-manusia. Misalnya, variasi prosodik seperti nada (*pitch*) dan kecepatan
-bicara bisa menjadi parameter tingkat Ekstraversi seseorang. Eksperimen
-yang telah dilakukan sebelumnya mengklasifikasikan individu dengan sifat
-tinggi dan rendah fitur suara. Orang dengan karakteristik vokal yang
-lantang dan lancar dalam berbicara cenderung dinilai lebih ekstrovert,
-sedangkan frekuensi suara yang monoton atau rendah diklasifikasikan
-dengan sifat kurang percaya diri atau dominasi yang rendah (Rubio et
-al., 2024).
+Dalam banyak studi, kepribadian dimodelkan menggunakan kerangka Big Five
+dan dianalisis hubungannya dengan ciri vokal. Beberapa penelitian dalam
+teknologi analisis suara, sudah menggunakan teori umum yang diterima
+secara luas seperti *Big Five Personality* dan telah melaporkan temuan
+yang lebih konsisten terkait hubungan ciri vokal dan kepribadian.
+Seperti fitur-fitur akustik tertentu yang berkorelasi dengan kepribadian
+manusia. Misalnya, fitur prosodik seperti nada (*pitch*) bisa menjadi
+parameter tingkat *Extraversion* seseorang. Selain itu, tinjauan lain
+juga merangkum bahwa kelancaran berbicara, loudness, dan speech rate
+kerap berkorelasi dengan Extraversion, serta ada temuan yang mengaitkan
+variasi intensitas maupun persepsi pitch dengan penilaian seperti
+self-confidence atau submissiveness/dominance (Rubio et al., 2024).
 
-Penelitian oleh Lukac (2024) menunjukkan bahwa representasi yang
-dipelajari melalui model deep learning modern dapat membantu estimasi
-kepribadian dengan kinerja yang cukup baik. Studi tersebut memanfaatkan
-representasi akustik dari suara serta representasi linguistik dari
-transkrip, dan melaporkan tingkat kesesuaian (correlation coefficient)
-yang berada pada rentang menengah. Temuan ini menguatkan potensi
-pemodelan berbasis representasi (representation learning) untuk
-personality computing. Namun, karena banyak studi menggabungkan berbagai
-modalitas, masih diperlukan kajian yang lebih terfokus untuk memahami
-kontribusi sinyal suara secara murni (audio-only) terhadap estimasi Big
-Five.
+Penelitian yang dilakukan oleh Lukac (2024) menunjukkan bahwa pendekatan
+berbasis representasi dapat memprediksi skor Big Five dengan korelasi
+sedang, dengan koefisien korelasi antara skor self-report dan skor
+prediksi berada pada kisaran r = 0,26--0,39. Studi tersebut
+menggabungkan informasi dari aspek akustik dan linguistik, sehingga
+masih perlu ditinjau lebih spesifik bagaimana kontribusi sinyal suara
+saja (audio-only) ketika modalitas lain tidak digunakan (Lukac, 2024).
+Dari sisi data, Rubio et al. (2024) menjelaskan bahwa First Impressions
+V2 Corpus terdiri dari 10.000 segmen video berdurasi 15 detik yang
+diekstrak dari YouTube dan merepresentasikan situasi wawancara kerja,
+sehingga audionya dapat dimanfaatkan untuk eksperimen audio-only.
 
-Secara historis, estimasi kepribadian dari suara banyak dilakukan
-melalui pendekatan berbasis fitur akustik handcrafted (misalnya
-prosodik, spektral, MFCC, jitter, shimmer) yang kemudian dipadukan
-dengan algoritme prediksi. Pendekatan ini membantu membuktikan bahwa
-sinyal vokal memiliki keterkaitan dengan dimensi kepribadian tertentu,
-meskipun performanya sering dilaporkan berada pada tingkat rendah hingga
-sedang dan dapat bervariasi antar dataset maupun konteks (Barchi et al.,
-2023; Rubio et al., 2024). Perkembangan terkini kemudian bergeser ke
-penggunaan model pra-latih berbasis Transformer yang mampu mempelajari
-representasi dari sinyal audio secara lebih kaya tanpa bergantung pada
-rekayasa fitur manual.
+Pada banyak penelitian awal, prediksi Big Five dari suara dilakukan
+dengan mengekstrak fitur akustik *handcrafted* (misalnya prosodik,
+spektral, MFCC, jitter, shimmer) yang kemudian dipadukan dengan
+algoritme prediksi (Barchi et al., 2023; Rubio et al., 2024). Hasil dari
+pendekatan berbasis fitur ini umumnya masih terbatas, studi yang memakai
+set deskriptor akustik yang luas untuk memprediksi self-report hanya
+mampu menjelaskan sekitar 16% variansi (Barchi et al., 2023). Selain
+itu, performa bisa tampak lebih tinggi jika evaluasi dan pemisahan data
+tidak ketat (misalnya potongan dari video yang sama muncul di data latih
+dan uji) (Barchi et al., 2023). Perkembangan terkini kemudian bergeser
+ke penggunaan model pra-latih berbasis Transformer yang mampu
+mempelajari representasi dari sinyal audio secara lebih kaya tanpa
+bergantung pada rekayasa fitur manual (Barchi et al., 2023).
 
-Di sisi lain, pendekatan berbasis Transformer pra-latih seperti Wav2Vec2
-dan HuBERT/WavLM menunjukkan potensi yang lebih kuat karena mampu
-menangkap representasi akustik yang kaya langsung dari sinyal suara
-tanpa rekayasa fitur manual (Barchi et al., 2023; Lukac, 2024). Meski
-demikian, masih terdapat pertanyaan yang belum sepenuhnya terjawab,
-seperti strategi pelatihan mana yang paling efektif untuk tugas estimasi
-Big Five dari audio-only, termasuk perbandingan antara penggunaan
-embedding beku (frozen feature extraction) dan fine-tuning, serta
-pengaruh pemilihan backbone pra-latih terhadap kinerja pada setiap
-dimensi Big Five. Oleh karena itu, penelitian tugas akhir ini berfokus
-pada evaluasi dan analisis komparatif beberapa model Transformer
-pra-latih beserta strategi pelatihannya (frozen vs fine-tuning) untuk
-memperoleh konfigurasi yang paling stabil dan unggul pada prediksi
-kepribadian berbasis suara.
+Banyak model pra-latih untuk suara dilatih dari rekaman audio tanpa
+label, lalu representasinya dipakai lagi untuk berbagai tugas lain. Pada
+wav2vec 2.0, sebagian representasi laten dari encoder dilakukan
+*masking*, kemudian model dilatih dengan objective kontrastif untuk
+menebak representasi yang benar dari sekumpulan kandidat yang mencakup
+distractor, model biasanya dilanjutkan dengan fine-tuning memakai data
+berlabel untuk tugas target setelah *pretrained*. (Baevski et al.,
+2020). HuBERT memakai ide masked prediction juga, tetapi targetnya
+berasal dari langkah *offline* *clustering* sehingga model belajar
+memprediksi label target pada bagian yang dimasking (Hsu et al., 2021).
+WavLM memperluas kerangka ini dengan menambahkan komponen *denoising*
+(misalnya input dibuat noisy/overlapped saat pretraining) dan
+memperbesar data pra-latih menjadi sekitar 94k jam agar representasinya
+lebih kuat dipakai di beragam tugas, termasuk non-ASR (Chen et al.,
+2022).
 
-Berdasarkan penelitian yang telah dilakukan sebelumnya, analisis
-kepribadian melalui data suara semakin diakui manfaatnya dalam berbagai
-aplikasi praktis. Misalnya, dalam konteks rekrutmen dan wawancara kerja,
-kepribadian kandidat dapat diestimasi secara lebih objektif melalui
-rekaman suara wawancara dan bisa membantu pengambil keputusan dalam
-mengurangi penilaian secara subyektif. Di bidang lain seperti interaksi
-manusia dan komputer, antarmuka cerdas dapat menyesuaikan responsnya
-berdasarkan kepribadian pengguna dengan deteksi suara, sehingga
-meningkatkan pengalaman pengguna secara personal. Dengan terus
-berkembangnya riset di rentang tahun 2020--2025 ini, pendekatan estimasi
-kepribadian dari data suara diharapkan semakin matang dan siap
-diimplementasikan secara luas (Rubio et al., 2024).
+Dari sisi penerapan, estimasi kepribadian berbasis suara sering dibahas
+untuk skenario yang melibatkan interaksi lisan seperti wawancara kerja
+dan seleksi personel, serta untuk mendukung perancangan antarmuka suara
+pada interaksi manusia--komputer (Rubio et al., 2024). Namun, agar
+pendekatan audio-only dapat diandalkan, masih perlu kejelasan pada level
+teknis: bagaimana pra-pemrosesan audio disusun supaya input konsisten,
+backbone Transformer pra-latih mana yang paling cocok, dan apakah lebih
+efektif memakai frozen feature extraction atau melakukan fine-tuning
+pada tugas Big Five. Karena itu, penelitian ini menyusun pipeline
+audio-only dan membandingkan backbone serta strategi pelatihan
+berdasarkan metrik evaluasi yang terukur.
 
 ## Rumusan Masalah
 
@@ -341,18 +339,22 @@ prediksi kepribadian Big Five pada skenario audio-only. Berdasarkan
 latar belakang tersebut, rumusan masalah penelitian ini adalah sebagai
 berikut:
 
-1.  Bagaimana merancang dan membangun pipeline estimasi kepribadian Big
-    Five berbasis *audio-only* menggunakan model Transformer pra-latih,
-    termasuk pra-pemrosesan data?
+1.  Bagaimana merancang dan membangun pipeline estimasi Big Five
+    berbasis audio-only menggunakan Transformer pra-latih (ekstraksi
+    representasi, perancangan model prediksi, dan evaluasi)?
 
-2.  Bagaimana performa model Transformer pra-latih dalam memprediksi Big
-    Five pada skenario audio-only berdasarkan metrik evaluasi (misalnya
-    MAE/RMSE, Pearson correlation, dan R^2^)?
+2.  Bagaimana merancang dan menerapkan tahapan pra-pemrosesan data
+    audio-only agar menghasilkan input yang konsisten dan siap digunakan
+    dalam *pipeline* estimasi Big Five (misalnya standarisasi format
+    audio, pembersihan data, segmentasi, normalisasi, dan penyusunan
+    pembagian data)?
 
-3.  Bagaimana perbandingan performa antar backbone Transformer pra-latih
+3.  Bagaimana performa model Transformer pra-latih dalam memprediksi Big
+    Five pada skenario audio-only berdasarkan metrik evaluasi, serta
+    bagaimana perbandingan performa antar backbone Transformer pra-latih
     dan antar strategi pelatihan (frozen feature extraction vs
-    fine-tuning) untuk menentukan konfigurasi yang paling stabil dan
-    unggul?
+    fine-tuning) untuk menentukan konfigurasi yang paling unggul dan
+    stabil?
 
 ## Batasan Masalah
 
@@ -380,9 +382,6 @@ yang ditetapkan adalah sebagai berikut:
     sebagai error, korelasi Pearson (r) sebagai keselarasan prediksi,
     serta R² sebagai proporsi variansi yang dijelaskan) dengan metode
     cross-validation, tanpa melibatkan uji persepsi manusia.
-
-6.  Split evaluasi bersifat speaker-independent (tidak ada pembicara
-    yang sama antara train/valid/test) untuk mencegah data leakage.
 
 ## Tujuan
 
@@ -452,12 +451,19 @@ praktis, maupun sosial.
 
 ## Hasil Penelitian Terdahulu
 
-Lorem ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
-ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
-ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum sebagaimana
-tampak pada [Gambar ‎2.1](#_Ref193439921). Keterangan gambar (*figure
-caption*) ditulis dalam bentuk kalimat biasa. Jadi yang dikapitalkan
-hanya huruf pertama pada kata pertama di keterangan tersebut.
+Penyusunan proposal tentang prediksi kepribadian *Big Five* hanya dari
+data suara ini melibatkan penelitian - penelitian terdahulu yang sudah
+menerapkan berbagai model *pre-trained Transformer.* Karena data
+berlabel untuk prediksi kepribadian dari suara relatif terbatas,
+pendekatan yang umum adalah tidak melatih model dari nol, tetapi
+memanfaatkan transfer learning dan model pra-latih untuk mengekstraksi
+embedding. Dalam studi ini, fitur akustik diekstrak dari embedding CNN
+pra-latih dan fitur linguistik dari embedding encoder model bahasa, lalu
+keduanya digabung untuk memprediksi tiap dimensi Big Five.
+
+sebagaimana tampak pada. Keterangan gambar (*figure caption*) ditulis
+dalam bentuk kalimat biasa. Jadi yang dikapitalkan hanya huruf pertama
+pada kata pertama di keterangan tersebut.
 
 []{#_Ref193439921 .anchor}Gambar ‎2.1 Kotak berwarna biru
 
@@ -510,6 +516,26 @@ kapital, kecuali untuk kata depan seperti 'di', 'ke', 'dari', 'yang',
 *Halaman ini sengaja dikosongkan.*
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
+
+Baevski, A., Zhou, H., Mohamed, A., & Auli, M. (2020). *wav2vec 2.0: A
+Framework for Self-Supervised Learning of Speech Representations*.
+http://arxiv.org/abs/2006.11477
+
+Barchi, R., Pepino, L., Gauder, L., Estienne, L., Meza, M., Riera, P., &
+Ferrer, L. (2023). *Apparent personality prediction from speech using
+expert features and wav2vec 2.0*. 21--25.
+https://doi.org/10.21437/smm.2023-5
+
+Chen, S., Wang, C., Chen, Z., Wu, Y., Liu, S., Chen, Z., Li, J., Kanda,
+N., Yoshioka, T., Xiao, X., Wu, J., Zhou, L., Ren, S., Qian, Y., Qian,
+Y., Wu, J., Zeng, M., Yu, X., & Wei, F. (2022). *WavLM: Large-Scale
+Self-Supervised Pre-Training for Full Stack Speech Processing*.
+https://doi.org/10.1109/JSTSP.2022.3188113
+
+Hsu, W.-N., Bolte, B., Tsai, Y.-H. H., Lakhotia, K., Salakhutdinov, R.,
+& Mohamed, A. (2021). *HuBERT: Self-Supervised Speech Representation
+Learning by Masked Prediction of Hidden Units*.
+http://arxiv.org/abs/2106.07447
 
 Lukac, M. (2024). Speech-based personality prediction using deep
 learning with acoustic and linguistic embeddings. *Scientific Reports*,
