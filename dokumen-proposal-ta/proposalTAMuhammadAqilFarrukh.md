@@ -224,14 +224,16 @@ Training, Education.***
 
 # DAFTAR GAMBAR {#daftar-gambar .Heading-0}
 
-[Gambar 2.1 Kotak berwarna biru [5](#_Ref193439921)](#_Ref193439921)
+[Gambar 2.1 Kotak berwarna biru [5](#_Toc202858853)](#_Toc202858853)
 
 *Halaman ini sengaja dikosongkan.*
 
 # DAFTAR TABEL {#daftar-tabel .Heading-0}
 
+[Tabel 2.1 Penelitian Terkait [6](#_Toc217337583)](#_Toc217337583)
+
 [Tabel 3.1 Lini Masa Pengerjaan Tugas Akhir
-[7](#_Ref193440555)](#_Ref193440555)
+[11](#_Ref193440555)](#_Ref193440555)
 
 *Halaman ini sengaja dikosongkan.*
 
@@ -245,7 +247,7 @@ Training, Education.***
 
 Suara manusia tidak hanya menyampaikan isi pesan, tetapi juga
 merefleksikan identitas dari penutur. Identitas ini seperti usia, aksen
-budaya, hingga kepribadian dari penutur (Lukac, 2024). Sejak 1930-an,
+budaya, hingga kepribadian dari penutur(Lukac, 2024). Sejak 1930-an,
 sejumlah penelitian sudah mencoba mengaitkan ciri-ciri vokal dengan
 kepribadian individu. Meskipun demikian, temuan di era awal tersebut
 cenderung belum konsisten, sehingga keterkaitan antara vokal dengan
@@ -281,10 +283,11 @@ prediksi berada pada kisaran r = 0,26--0,39. Studi tersebut
 menggabungkan informasi dari aspek akustik dan linguistik, sehingga
 masih perlu ditinjau lebih spesifik bagaimana kontribusi sinyal suara
 saja (audio-only) ketika modalitas lain tidak digunakan (Lukac, 2024).
-Dari sisi data, Rubio et al. (2024) menjelaskan bahwa First Impressions
+Dari sisi data, Rubio et al. (2024) menyebutkan bahwa First Impressions
 V2 Corpus terdiri dari 10.000 segmen video berdurasi 15 detik yang
 diekstrak dari YouTube dan merepresentasikan situasi wawancara kerja,
-sehingga audionya dapat dimanfaatkan untuk eksperimen audio-only.
+sehingga audionya dapat dimanfaatkan untuk eksperimen audio-only,
+dataset ini adalah salah satu contoh yang dipakai di riset personality.
 
 Pada banyak penelitian awal, prediksi Big Five dari suara dilakukan
 dengan mengekstrak fitur akustik *handcrafted* (misalnya prosodik,
@@ -451,21 +454,307 @@ praktis, maupun sosial.
 
 ## Hasil Penelitian Terdahulu
 
-Penyusunan proposal tentang prediksi kepribadian *Big Five* hanya dari
-data suara ini melibatkan penelitian - penelitian terdahulu yang sudah
-menerapkan berbagai model *pre-trained Transformer.* Karena data
-berlabel untuk prediksi kepribadian dari suara relatif terbatas,
-pendekatan yang umum adalah tidak melatih model dari nol, tetapi
-memanfaatkan transfer learning dan model pra-latih untuk mengekstraksi
-embedding. Dalam studi ini, fitur akustik diekstrak dari embedding CNN
-pra-latih dan fitur linguistik dari embedding encoder model bahasa, lalu
-keduanya digabung untuk memprediksi tiap dimensi Big Five.
+Penyusunan proposal ini melibatkan penelitian - penelitian terdahulu
+yang relevan dikumpulkan sebagai dasar perancangan pipeline dan
+pembanding hasil pada tugas estimasi kepribadian Big Five berbasis
+audio-only*.* Dataset yang sering muncul adalah ChaLearn First
+Impressions V2, sementara metodenya beragam dari fitur handcrafted,
+embedding wav2vec 2.0, hingga pendekatan multimodal. Ringkasannya ada di
+Tabel 2.1, yang juga menjadi sumber informasi untuk merumuskan fokus
+penelitian pada pemilihan backbone pra-latih dan strategi frozen vs
+fine-tuning.
 
-sebagaimana tampak pada. Keterangan gambar (*figure caption*) ditulis
-dalam bentuk kalimat biasa. Jadi yang dikapitalkan hanya huruf pertama
-pada kata pertama di keterangan tersebut.
+Salah satu referensi yang diambil adalah penelitian oleh Rubio et al.
+(2024) yang menguji kelayakan asesmen kepribadian berbasis suara untuk
+konteks seleksi personel dengan merekam 100 partisipan saat wawancara,
+lalu membandingkan prediksi dari fitur suara terhadap skor Big Five dari
+NEO-FFI (self-report), penilaian orang dekat, dan rating ahli. Dalam
+riset ini bahwa sejumlah fitur suara punya daya prediksi dengan kisaran
+korelasi sekitar 0,3--0,4, sehingga pendekatan berbasis suara terlihat
+menjanjikan, tetapi belum memberi jawaban teknis tentang konfigurasi
+audio-only yang paling efektif, misalnya pilihan backbone
+self-supervised modern serta perbandingan frozen feature extraction dan
+fine-tuning.
 
-[]{#_Ref193439921 .anchor}Gambar ‎2.1 Kotak berwarna biru
+Penelitian selanjutnya adalah penelitian yang dilakukan oleh Barchi et
+al. (2023) yang menggunakan First Impressions Dataset dari Challenge
+ChaLearn LAP 2016, berisi sekitar 10.000 klip berdurasi 15 detik dalam
+konteks wawancara kerja, dengan label Big Five yang dinilai oleh
+listener (apparent personality). Pada skenario audio-only, mereka
+membandingkan fitur eGeMAPS + speech ratio dengan embedding wav2vec 2.0,
+lalu melatih Random Forest Regressor dan DNN. Hasil terbaik diperoleh
+DNN dengan R²_avg 0,33 pada official split dan 0,28 pada split yang
+lebih ketat berdasarkan video identifier. Studi ini memberikan baseline
+audio-only sekaligus menekankan pentingnya pemisahan data yang ketat,
+tetapi belum membandingkan backbone self-supervised lain seperti HuBERT
+atau WavLM.
+
+Selanjutnya ada penelitian yang telah dilakukan oleh Lukac (2024) yang
+memprediksi skor Big Five self-report dari rekaman free-form speech yang
+diambil dari 2045 responden dengan menggabungkan dua jenis fitur, yaitu
+akustik dan linguistik. Fitur akustik diekstrak menggunakan YAMNet yang
+merupakan model pra-latih untuk audio event detection (pra-latih di
+AudioSet), lalu fitur linguistik dibentuk dari transkrip Whisper yang
+diubah menjadi embedding dengan text-embedding-ada-002. Kedua embedding
+ini kemudian digabung (1024-d + 1536-d) dan digunakan untuk melatih
+model regresi XGBoost (satu model per trait) dengan 5-fold
+cross-validation pada data latih, lalu evaluasi utamanya memakai
+korelasi antara prediksi dan ground truth di data uji, dengan rentang
+korelasi yang dilaporkan 0,26--0,39. Studi ini masih multimodal
+(audio+teks) dan belum membahas perbandingan backbone pra-latih maupun
+evaluasi kontribusi audio-only.
+
+Penelitian selanjutnya dilakukan oleh Aslan et al. (2021)yang
+memprediksi apparent personality (Big Five) dari klip video dengan
+menggabungkan beberapa sumber informasi, yaitu kondisi latar/*scene*,
+wajah, suara, dan transkrip. Mereka memproses tiap jenis data dengan
+model pra-latih yang sesuai (misalnya ResNet untuk gambar/visual, VGGish
+untuk audio, dan ELMo untuk teks), lalu menggabungkan hasilnya dengan
+mekanisme perhatian agar bagian yang informatif mendapat bobot lebih
+besar. Evaluasi dilakukan pada ChaLearn First Impressions V2 yang berisi
+sekitar 10.000 video YouTube berdurasi rata-rata ±15 detik, dan
+penelitian ini melaporkan performa mean accuracy sekitar 0,918. Studi
+ini masih berbasis multimodal sehingga belum menjawab perbandingan
+konfigurasi audio-only.
+
+Selanjutnya ada penelitian lain yang dilakukan oleh Zhao et al. (2023)
+yang juga menggunakan dataset ChaLearn First Impression V2 (10.000 klip,
+±15 detik, \>3.000 video YouTube; split 6.000/2.000/2.000) yang
+digunakan untuk prediksi kepribadian berbasis skor Big Five Personality.
+Dalam penelitian ini dilakukan ekstraksi fitur dari audio, scene, dan
+wajah, kemudian memodelkan dinamika temporal menggunakan Bi-LSTM serta
+Transformer, dan menggabungkan beberapa hasil prediksi dengan weighted
+decision-level fusion. Evaluasi menggunakan metrik S (semakin tinggi
+semakin baik) dan konfigurasi terbaik yang dilaporkan adalah S rata-rata
+0,9167 untuk prediksi kepribadian. Dari sisi gap untuk riset audio-only,
+studi ini masih bertumpu pada multimodal video, sehingga belum menjawab
+konfigurasi teknis yang spesifik untuk audio-only dan perbandingan
+backbone.
+
+Kemudian terdapat penelitian oleh Mawalim et al. (2023) yang melakukan
+prediksi kepribadian Big Five pada konteks diskusi kelompok menggunakan
+dua dataset, yaitu MATRICS (diskusi kelompok berbahasa Jepang dengan 40
+partisipan dalam 10 grup) dan ELEA-AV (27 pertemuan, 102 partisipan,
+durasi rekaman sekitar 15 menit dengan topik *winter survival*).
+Pendekatan yang digunakan menggabungkan beberapa sumber informasi,
+seperti suara, bahasa, dan gerak/visual, serta menambahkan fitur yang
+mewakili karakteristik pembicara agar perbedaan antar-individu ikut
+tertangkap dalam prediksi. Hasil yang didapatkan yaitu penambahan
+ciri-ciri pembicara membantu meningkatkan kinerja model pada beberapa
+dimensi, dan informasi dari fitur suara berkontribusi konsisten dalam
+prediksi dibanding fitur visual yang lebih membantu pada trait tertentu.
+Dari sisi gap, penelitian ini masih berfokus pada diskusi kelompok
+dengan dataset yang relatif terbatas, dan penulis juga menyebutkan belum
+banyak mengeksplor pendekatan yang lebih mutakhir, sehingga ruang
+pengembangan masih terbuka.
+
+Ada penelitian lain yang dijadikan referensi yaitu penelitian yang
+dilakukan oleh Giritlioğlu et al. (2021) yang membahas prediksi Big Five
+dari video dengan memanfaatkan gabungan isyarat wajah, gerak tubuh,
+suara, dan transkrip. Penelitian ini juga memperkenalkan dataset SIAP
+(*Self-presentation and Induced Behavior Archive for Personality
+Analysis*) yaitu rekaman self-presentation dan kondisi perilaku 60
+partisipan terhadap pemicu yang diberikan (tiga sudut kamera) dengan
+label Big Five berupa penilaian self-assessed dan observed, lalu
+evaluasi dilakukan pada SIAP dan juga ChaLearn LAP First Impressions.
+Untuk pemodelan, penelitian ini memakai beberapa arsitektur per
+modalitas, seperti 3D-ResNext dan CNN-GRU pada informasi wajah, serta
+LSTNet untuk voice, transcribed speech, body pose, dan facial action
+units. Hasilnya dilaporkan dalam MAE, misalnya voice (LSTNet) memiliki
+AVG MAE 0,108 pada FID dan 0,165 pada SIAP-Interview, dan pada skema
+fusion performa terbaik mencapai AVG MAE 0,085 pada FID (LSVR) serta
+0,153 pada SIAP-Interview (Feature Attention). Penelitian ini
+menganalisis kontribusi tiap modalitas dan penggabungan informasi,
+kesimpulan yang didapatkan yaitu informasi terkait wajah cenderung
+stabil untuk prediksi kepribadian pada data video. Gap yang ada yaitu
+masih menggunakan multimodal video, belum membahas perbandingan dan
+konfigurasi untuk audio-only.
+
+Selanjutnya ada penelitian yang dilakukan oleh Phan & Rauthmann (2021)
+yang membahas *personality computing*, yaitu upaya mengekstrak informasi
+kepribadian (misalnya Big Five) dari data yang ditangkap sensor seperti
+teks, jejak digital, penggunaan smartphone, perilaku non-verbal, pola
+bicara, sampai data dari aktivitas seperti *gameplay*. Artikel ini
+menyoroti cara mengevaluasi kinerja prediksi dan isu psikometrik
+(reliability dan validity), sekaligus membahas implikasi etis, legal,
+dan sosial dari asesmen berbasis sensor. Salah satu catatan pentingnya
+adalah kinerja prediksi berbasis *machine learning* terhadap ukuran
+kuesioner diperkirakan punya batas atas sekitar r ≈ 0,30--0,50, sehingga
+nilai yang lebih tinggi sebaiknya dibaca hati-hati karena berpotensi
+terkait *overfitting*. Dari sisi gap untuk riset *audio-only*, artikel
+ini lebih berupa peta konsep dan panduan evaluasi umum, belum masuk ke
+pembahasan teknis yang spesifik seperti rancangan pipeline audio-only
+atau pembandingan backbone pra-latih dan strategi frozen vs fine-tuning.
+
+Penelitian selanjutnya yang dijadikan referensi adalah penelitian oleh
+Ghassemi et al. (2024) yang memprediksi Big Five dengan menggabungkan
+multimodal (audio, visual, dan transkrip) pada dataset ChaLearn First
+Impressions. Penelitian ini menggunakan *dependency-free* split
+berdasarkan Youtube channel ID, karena pada split asli banyak channel
+yang muncul di train dan juga muncul di validasi maupun test (sekitar
+73,2% di validasi dan 84% di test), sehingga hasil bisa terlihat lebih
+tinggi. Metode yang dilakukan di penelitian ini menggabungkan beberapa
+jenis fitur dan meringkasnya. Model yang digunakan yaitu BERT (teks),
+Wav2Vec (audio embedding transfer), OpenFace + FaceNet-style/Inception
+(visual), temporal autoencoder, deep ensemble MLP. Hasil yang didapatkan
+yaitu gabungan audio dan visual yang memberikan kinerja lebih baik yaitu
+R² avg 0,369 dibandingkan audio saja yang memberikan hasil kinerja
+(0,280) atau visual saja (0,314), sementara transkrip sendiri relatif
+lemah (0,037). Gap penelitian pada studi ini adalah fokusnya lebih pada
+dependency-free split dan pipeline multimodal, sementara eksplorasi
+backbone audio pra-latih untuk skenario audio-only masih terbatas.
+
+Penelitian terkait terakhir yang diambil sebagai referensi yaitu
+penelitian yang dilakukan oleh Aylett et al. (2020) yang membahas
+bagaimana system TTS (text-to-speech) dan gaya kualitas suara bisa
+mengubah skor Big Five pada suara sintetis. Penelitian ini membuat
+stimulus dari tiga korpus teks yang terdiri dari About Myself, Speed
+Dating Positive, dan Speed Dating Negative. Kemudian dilakukan rendering
+sehingga menjadi beberapa versi menggunakan dua tipe system sistesis
+yaitu *parametric synthesis* dan *unit selection synthesis*
+(CereVoice2), termasuk variasi kualitas suara neutral, lax, dan tense
+pada suara tertentu. Penilaian dilakukan oleh 35 partisipan yang memberi
+skor Big Five dan naturalness untuk setiap output. Hasil yang didapatkan
+yaitu jenis system dan sumber suara berpengaruh pada naturalness dengan
+contoh selisih yang jelas pada *neutral unit selection* (rata-rata
+naturalness, dengan contoh selisih yang jelas). Naturalness hanya
+menunjukkan hubungan kecil dengan Openness (sekitar r = 0,249),
+sementara trait lain tidak tampak kuat terkait naturalness. Dari sisi
+persepsi Big Five, perubahan *rendition* (misalnya Text vs Lax vs Tense)
+juga memunculkan perbedaan yang signifikan pada beberapa trait, termasuk
+Agreeableness (contohnya pada korpus About Myself). Gap yang ada pada
+penelitian ini adalah berfokus pada persepsi kepribadian dari suara
+sintetis, bukan membangun pipeline prediksi Big Five dari rekaman nyata,
+sehingga belum masuk ke pembahasan backbone audio pretrained (SSL
+Transformer).
+
+  ---------------------------------------------------------------------------------------
+  **Judul**           **Dataset**           **Metode**                **Analisis Gap**
+  ------------------- --------------------- ------------------------- -------------------
+  Feasibility of Big  100 partisipan,       Ekstraksi fitur suara     Masih berbasis
+  Data Analytics to   direkam saat          dari rekaman lalu dibuat  fitur suara, belum
+  Assess Personality  wawancara individual; model prediksi            membahas
+  Based on Voice      label kepribadian     kepribadian. Hasil        konfigurasi
+  Analysis (Rubio et  dari NEO-FFI          prediksi yang dilaporkan  pretrained speech
+  al., 2024)          (self-report), plus   berada di kisaran         transformer untuk
+                      penilaian "close      0,3--0,4 dan juga terkait audio-only (mis.
+                      other" dan rating     dengan rating close other pilihan backbone,
+                      ahli berbasis rekaman & ahli                    frozen vs
+                                                                      fine-tuning)
+
+  Apparent            First Impressions     Audio-only pada First     Studi ini baru
+  personality         Dataset Challenge     Impressions, bandingkan   memberi baseline
+  prediction from     ChaLearn LAP 2016     eGeMAPS + speech ratio vs audio-only dan
+  speech using expert (wawancara kerja,     embedding wav2vec 2.0,    menekankan
+  features and        10.000 klip 15 detik, lalu latih Random Forest  pentingnya split
+  wav2vec 2.0 (Barchi ). Dataset ini sudah  Regressor dan DNN.        ketat (by video
+  et al., 2023)       dilabeli Big Five     Terbaik DNN dengan R²_avg ID), tetapi belum
+                      yang dinilai oleh     0,33 (official split) dan membandingkan
+                      listener (apparent    0,28 (split ketat by      backbone SSL lain.
+                      personality)          video ID).                
+
+  Speech-based        Free-form speech +    YAMNet (AudioSet) untuk   Masih audio+teks
+  personality         self-report Big Five, embedding akustik +       (bukan audio-only),
+  prediction using    N = 2045              Whisper →                 backbone akustik
+  deep learning with                        text-embedding-ada-002    yang dipakai bukan
+  acoustic and                              untuk embedding           SSL Transformer,
+  linguistic                                linguistik, digabung      dan belum menguji
+  embeddings (Lukac,                        (1024+1536) lalu regresi  perbandingan
+  2024)                                     XGBoost; evaluasi         backbone.
+                                            korelasi r = 0,26--0,39   
+
+  Multimodal          ChaLearn First        4 modalitas (scene,       Metode utamanya
+  assessment of       Impressions V2:       wajah, suara, transkrip). multimodal, bukan
+  apparent            10.000 video YouTube, Backbone pra-latih:       audio-only. Belum
+  personality using   rata-rata ±15 detik,  ResNet-v2-101 + LSTM      membahas
+  feature attention   label apparent Big    (scene & wajah), VGGish + perbandingan
+  and error           Five (AMT).           LSTM (audio log-mel),     backbone SSL audio
+  consistency                               ELMo + MLP (teks). Fusion modern.
+  constraint (Aslan                         pakai feature attention + 
+  et al., 2021)                             error consistency. Hasil: 
+                                            mean accuracy ≈ 0,918.    
+
+  Integrating audio   ChaLearn First        Fitur audio+visual (scene Fokus multimodal
+  and visual          Impression-V2: 10.000 & wajah), temporal        dan bukan
+  modalities for      klip (\~15 s) dari    modeling pakai Bi-LSTM    *audio-only,* dan
+  multimodal          \>3.000 video         dan Transformer, lalu     dalam penelitian
+  personality trait   YouTube; split        fusion berbobot           ini belum ada
+  recognition via     6.000/2.000/2.000;    (decision-level).         perbandingan
+  hybrid deep         label Big Five (0--1) Terbaik: S_avg 0,9167     backbone.
+  learning (Zhao et   & "Interview".        (late fusion).            
+  al., 2023)                                                          
+
+  Personality trait   MATRICS (diskusi      Fitur multimodal (audio,  Fokus pada diskusi
+  estimation in group kelompok Jepang; 40   bahasa, motion/visual) +  kelompok, korpus
+  discussions using   partisipan, 10 grup), speaker embedding         relatif kecil &
+  multimodal analysis ELEA-AV (27 meeting,  i-vector/x-vector;        bahasa terbatas.
+  and speaker         102 partisipan; ±15   klasifikasi biner Big     Belum mengeksplor
+  embedding (Mawalim  menit; winter         Five, evaluasi            pendekatan yang
+  et al., 2023)       survival task)        LOPCV/10-fold + ablation, lebih mutakhir.
+                                            contoh peningkatan F1     
+                                            neuroticism 61→68%        
+                                            (ELEA-AV) dan 68→79%      
+                                            (MATRICS, skema           
+                                            pembanding)               
+
+  Multimodal analysis Dataset SIAP          Memodelkan tiap modalitas Lebih fokus ke
+  of personality      (*Self-presentation   dengan arsitektur khusus  dataset & induced
+  traits on videos of and Induced Behavior  (misalnya                 behavior, bukan
+  self-presentation   Archive for           3D-ResNext/CNN-GRU untuk  evaluasi backbone
+  and induced         Personality           wajah dan LSTNet untuk    SSL audio untuk Big
+  behavior            Analysis*) yang       voice, transkrip, pose,   Five audio-only,
+  (Giritlioğlu et     melibatkan 60 subjek  serta action units), lalu dan bukan
+  al., 2021)          direkam pada beberapa melakukan fusion, hasil   membandingkan
+                      sesi, dan ChaLearn    terbaik dilaporkan        frozen vs
+                      LAP First Impressions mencapai AVG MAE 0,085    fine-tuning.
+                                            pada FID (LSVR) dan 0,153 
+                                            pada SIAP-Interview       
+                                            (Feature Attention).      
+
+  Personality         Tidak menggunakan     Tinjauan literatur        Tidak memberikan
+  computing: New      dataset, karena studi tentang konsep            rancangan pipeline
+  frontiers in        ini rangkuman sumber  personality computing,    teknis audio-only
+  personality         data                  evaluasi performa, isu    Big Five, juga
+  assessment (Phan &  "*sensor-assessed*"   psikometrik dan implikasi tidak membahas
+  Rauthmann, 2021)    seperti teks, jejak   etis; menekankan adanya   komparasi backbone
+                      digital, penggunaan   perkiraan ceiling         SSL audio dan
+                      *smartphone*,         convergent validity       strategi pelatihan.
+                      perilaku non-verbal,  sekitar r ≈ 0,30--0,50    
+                      pola berbicara, dan   dan risiko overfitting    
+                      *game-play.*          jika terlalu tinggi.      
+
+  Unsupervised        ChaLearn First        Multimodal (audio,        Fokus utama pada
+  Multimodal Learning Impressions (10.000   visual, transkrip) dengan dependency-free
+  for Dependency-Free klip \~15 detik, dari agregasi temporal.        split dan pipeline
+  Personality         YouTube); memakai     Model/komponen: BERT      multimodal;
+  Recognition         dependency-free split (teks), Wav2Vec (audio    eksplorasi backbone
+  (Ghassemi et al.,   berbasis YouTube      embedding transfer),      audio pra-latih
+  2024)               channel ID karena     OpenFace +                untuk skenario
+                      overlap channel pada  FaceNet-style/Inception   audio-only masih
+                      split asli tinggi     (visual), temporal        terbatas (tidak
+                      (±73,2% val; ±84%     autoencoder, dan prediksi membandingkan
+                      test).                akhir dengan deep         banyak backbone).
+                                            ensemble MLP**.** Hasil:  
+                                            audio+visual R² avg 0,369 
+                                            (audio 0,280, visual      
+                                            0,314, transkrip 0,037).  
+
+  Speech synthesis    Tiga korpus teks:     Membandingkan parametric  Fokus pada
+  for the generation  About Myself, Speed   synthesis vs unit         membentuk/menilai
+  of artificial       Dating Positive,      selection synthesis       persepsi
+  personality (Aylett Speed Dating          (CereVoice2), plus        kepribadian pada
+  et al., 2020)       Negative; stimulus    variasi voice quality     suara sintetis,
+                      berupa ucapan         (neutral/lax/tense).      bukan prediksi Big
+                      sintetis yang dinilai Hasil contoh: naturalness Five audio-only
+                      oleh 35 partisipan    neutral unit selection    dari data wawancara
+                      (skor Big Five +      sekitar 3,1 vs 3,9        nyata; tidak
+                      naturalness).         (tergantung voice), dan   membahas
+                                            naturalness hanya         perbandingan
+                                            berkorelasi kecil dengan  backbone SSL audio.
+                                            Openness (r≈0,249).       
+  ---------------------------------------------------------------------------------------
+
+  : []{#_Toc217337583 .anchor}Tabel 2.1 Penelitian Terkait
 
 ## Dasar Teori
 
@@ -511,11 +800,21 @@ kapital, kecuali untuk kata depan seperti 'di', 'ke', 'dari', 'yang',
        Tugas Akhir                                                      
   ---------------------------------------------------------------------------
 
-  : []{#_Ref193440555 .anchor}Tabel ‎3.1 Lini Masa Pengerjaan Tugas Akhir
+  : []{#_Ref193440555 .anchor}Tabel 3.1 Lini Masa Pengerjaan Tugas Akhir
 
 *Halaman ini sengaja dikosongkan.*
 
 # DAFTAR PUSTAKA {#daftar-pustaka .Heading-0}
+
+Aslan, S., Güdükbay, U., & Dibeklioğlu, H. (2021). Multimodal assessment
+of apparent personality using feature attention and error consistency
+constraint. *Image and Vision Computing*, *110*.
+https://doi.org/10.1016/j.imavis.2021.104163
+
+Aylett, M. P., Vinciarelli, A., & Wester, M. (2020). Speech synthesis
+for the generation of artificial personality. *IEEE Transactions on
+Affective Computing*, *11*(2), 361--372.
+https://doi.org/10.1109/TAFFC.2017.2763134
 
 Baevski, A., Zhou, H., Mohamed, A., & Auli, M. (2020). *wav2vec 2.0: A
 Framework for Self-Supervised Learning of Speech Representations*.
@@ -532,6 +831,19 @@ Y., Wu, J., Zeng, M., Yu, X., & Wei, F. (2022). *WavLM: Large-Scale
 Self-Supervised Pre-Training for Full Stack Speech Processing*.
 https://doi.org/10.1109/JSTSP.2022.3188113
 
+Ghassemi, S., Zhang, T., Van Breda, W., Koutsoumpis, A., Oostrom, J. K.,
+Holtrop, D., & De Vries, R. E. (2024). Unsupervised Multimodal Learning
+for Dependency-Free Personality Recognition. *IEEE Transactions on
+Affective Computing*, *15*(3), 1053--1066.
+https://doi.org/10.1109/TAFFC.2023.3318367
+
+Giritlioğlu, D., Mandira, B., Yilmaz, S. F., Ertenli, C. U., Akgür, B.
+F., Kınıklıoğlu, M., Kurt, A. G., Mutlu, E., Gürel, Ş. C., &
+Dibeklioğlu, H. (2021). Multimodal analysis of personality traits on
+videos of self-presentation and induced behavior. *Journal on Multimodal
+User Interfaces*, *15*(4), 337--358.
+https://doi.org/10.1007/s12193-020-00347-7
+
 Hsu, W.-N., Bolte, B., Tsai, Y.-H. H., Lakhotia, K., Salakhutdinov, R.,
 & Mohamed, A. (2021). *HuBERT: Self-Supervised Speech Representation
 Learning by Masked Prediction of Hidden Units*.
@@ -541,6 +853,15 @@ Lukac, M. (2024). Speech-based personality prediction using deep
 learning with acoustic and linguistic embeddings. *Scientific Reports*,
 *14*(1). https://doi.org/10.1038/s41598-024-81047-0
 
+Mawalim, C. O., Okada, S., Nakano, Y. I., & Unoki, M. (2023).
+Personality trait estimation in group discussions using multimodal
+analysis and speaker embedding. *Journal on Multimodal User Interfaces*,
+*17*(2), 47--63. https://doi.org/10.1007/s12193-023-00401-0
+
+Phan, L. V., & Rauthmann, J. F. (2021). Personality computing: New
+frontiers in personality assessment. *Social and Personality Psychology
+Compass*, *15*(7). https://doi.org/10.1111/spc3.12624
+
 Rubio, V. J., Aguado, D., Toledano, D. T., & Fernández-Gallego, M. P.
 (2024). Feasibility of Big Data Analytics to Assess Personality Based on
 Voice Analysis. *Sensors*, *24*(22). https://doi.org/10.3390/s24227151
@@ -549,6 +870,11 @@ Soldati, M., Doulis, M., & Csillaghy, A. (2007). SphereViz - Data
 Exploration in a Virtual Reality Environment. *2007 11th International
 Conference Information Visualization (IV '07)*, 680--683.
 https://doi.org/10.1109/IV.2007.105
+
+Zhao, X., Liao, Y., Tang, Z., Xu, Y., Tao, X., Wang, D., Wang, G., & Lu,
+H. (2023). Integrating audio and visual modalities for multimodal
+personality trait recognition via hybrid deep learning. *Frontiers in
+Neuroscience*, *16*. https://doi.org/10.3389/fnins.2022.1107284
 
  
 
