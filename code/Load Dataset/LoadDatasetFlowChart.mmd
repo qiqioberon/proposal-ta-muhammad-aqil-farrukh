@@ -1,0 +1,65 @@
+---
+config:
+  layout: elk
+---
+flowchart TB
+ subgraph NB["Notebook Load Dataset CVPR17/FI-V2"]
+        A1["Langkah 1: Load daftar video, id klip dan path video"]
+        A0["Input awal: ~6000 video CVPR17/FI-V2 (.mp4) + file anotasi Big Five"]
+        A2["Langkah 2: Load anotasi Big Five per klip (5 skor kontinu 0–1)"]
+        A3["Transpose anotasi menjadi format 1 baris per klip dengan 5 kolom label Big Five"]
+        A4["Konversi semua video ke WAV 16 kHz mono dan simpan wav_path"]
+        A5["Bangun tabel meta awal fi_v2_meta.csv (clip_id, group_id/person_id, relpath video, wav_path, 5 label Big Five)"]
+        B0["Mulai analisis durasi audio untuk semua klip WAV"]
+        B1["Hitung durasi setiap klip (detik) dari WAV 16 kHz"]
+        B2["Ringkasan durasi: mean ≈ 15.27 dtk, std ≈ 0.47, min ≈ 2.06 dtk, cek histogram durasi"]
+        B3["Tentukan rentang durasi wajar: min_sec = 4 dtk, max_sec = 30 dtk"]
+        B4["Drop klip di luar rentang: hapus 3 klip terlalu pendek (~2.9, 3.9, 2.06 dtk)"]
+        B5["Hasil: fi_v2_meta.clean.csv berisi 5997 klip dengan durasi 4–30 dtk"]
+        C0["EDA label Big Five pada 5997 klip di fi_v2_meta.clean.csv"]
+        C1["Plot histogram setiap trait: extraversion, agreeableness, conscientiousness, neuroticism, openness"]
+        C2["Hitung matriks korelasi (signed dan absolut) antar 5 trait"]
+        C3["Visualisasi heatmap korelasi dan interpretasi hubungan antar trait"]
+        C4["Buat beberapa scatter plot antar pasangan trait, misalnya extraversion vs agreeableness dan extraversion vs openness (subset ~1500 klip)"]
+        C5["Analisis distribusi label per group_id/person_id dan rancang skema GroupKFold 5-fold (tiap fold ≈ 1200 klip tanpa bocor person)"]
+        D0["Tahap VAD sederhana berbasis energi (librosa) pada 5997 klip"]
+        D1["Untuk setiap wav_path: hitung RMS per frame (frame 30 ms, hop 15 ms)"]
+        D2["Hitung median RMS dan tentukan threshold energi = median × 0.5"]
+        D3["Tandai frame voiced (RMS &gt; threshold) dan gabungkan jeda unvoiced &lt; 120 ms"]
+        D4["Dari mask voiced, hitung speech_sec, voiced_ratio, rms_db_median untuk tiap klip"]
+        D5["Tambahkan tiga kolom baru ke dataframe: speech_sec, voiced_ratio, rms_db_median"]
+        D6["Terapkan filter kualitas: speech_sec ≥ 6 dtk, voiced_ratio ≥ 0.35, rms_db_median ≥ -40 dB"]
+        D7["Klip yang lolos semua kriteria → data_kept: 5349 klip"]
+        D8["Klip yang gagal minimal satu kriteria → data_rejected: 648 klip"]
+        D9["Simpan fi_v2_meta.speechclean.csv berisi 5349 klip siap untuk tahap training"]
+        D10["Simpan rejected.by_speech.csv berisi 648 klip bermasalah (terlalu pendek, banyak diam, atau sinyal lemah)"]
+        D11["Ringkasan klip kept: mean speech_sec ≈ 12.33 dtk, mean voiced_ratio ≈ 0.806, mean rms_db_median ≈ -28.23 dB (min 6.90 dtk, max 15.31 dtk; min -39.99 dB, max -5.93 dB)"]
+  end
+    A0 --> A1
+    A1 --> A2
+    A2 --> A3
+    A3 --> A4
+    A4 --> A5
+    A5 --> B0
+    B0 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> B5
+    B5 --> C0
+    C0 --> C1
+    C1 --> C2
+    C2 --> C3
+    C3 --> C4
+    C4 --> C5
+    C5 --> D0
+    D0 --> D1
+    D1 --> D2
+    D2 --> D3
+    D3 --> D4
+    D4 --> D5
+    D5 --> D6
+    D6 --> D7 & D8
+    D7 --> D9
+    D8 --> D10
+    D9 --> D11
