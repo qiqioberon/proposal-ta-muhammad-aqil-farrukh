@@ -1,0 +1,51 @@
+Sumber yang dipakai untuk 2.2.1 (dan fungsinya)
+
+Phan (2021): definisi traits sebagai pola yang relatif menetap + Big Five sebagai taksonomi yang paling umum digunakan. 
+
+Social Personality Psych - 20…
+
+Mawalim dkk. (2023): Big Five sebagai taksonomi populer & stabil lintas budaya/alat ukur, serta definisi ringkas OCEAN. 
+
+s12193-023-00401-0 - Mawalim
+
+McCrae (…; paper “An Introduction…”): alasan efisiensi FFM (global description dengan lima skor). 
+
+Aylett_Vinciarelli_Wester - Ayl…
+
+Aslan dkk. (2021): penjelasan FFM sebagai model 5 dimensi + contoh interpretasi spektrum rendah–tinggi. 
+
+Aslan
+
+Aslan
+
+Rammstedt & John (2007): contoh instrumen pengukuran Big Five (BFI-44 vs BFI-10). 
+
+Measuring-Personality-in-One-Mi…
+
+(Opsional untuk latar sejarah) Goldberg (1990): landasan “leksikal” (mengapa istilah sifat di bahasa dianggap mewakili perbedaan individu).
+
+Bukti kalimat pendukung dari paper (kutipan singkat)
+
+Catatan: tiap kutipan dibuat singkat (≤25 kata per sumber), lalu dipakai sebagai dasar sitasi pada paragraf di atas.
+
+Phan (2021): “…the Big Five traits, the most widely used trait taxonomy.” 
+
+Social Personality Psych - 20…
+
+Mawalim dkk. (2023): “The most popular and influential personality taxonomy is the Big Five personality trait system.” 
+
+s12193-023-00401-0 - Mawalim
+
+McCrae (paper “An Introduction…”): “…efficient (providing a global description of personality with as few as five scores).” 
+
+Aylett_Vinciarelli_Wester - Ayl…
+
+Aslan dkk. (2021): “FFM is a model based on descriptors of human personality in five dimensions…” 
+
+Aslan
+
+Rammstedt & John (2007): “The Big Five Inventory (BFI) comprises 44 items… the short inventory (BFI-10) comprises 10 items.” 
+
+Measuring-Personality-in-One-Mi…
+
+Goldberg (1990): “trait terms in natural language may be regarded as important symbols of individual differences.”

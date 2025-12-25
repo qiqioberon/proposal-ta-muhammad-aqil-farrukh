@@ -2,9 +2,38 @@
 generated](media/image1.png){width="0.9847222222222223in"
 height="0.9847222222222223in"}
 
-------------------------------------------------------------------------
-
-------------------------------------------------------------------------
+> **PROPOSAL TUGAS AKHIR -- EF234702**
+>
+> **Analisis Komparatif Pendekatan Machine Learning dan Transformer
+> Pra-latih untuk Prediksi Kepribadian dari Data Suara**
+>
+> **Muhammad Aqil Farrukh**
+>
+> NRP 5025221158
+>
+> Dosen Pembimbing
+>
+> Shintami Chusnul Hidayati, S.Kom., M.Sc., Ph.D
+>
+> NIP 1987202012004
+>
+> Dosen Ko-pembimbing
+>
+> Dini Adni Navastara, S.Kom., M.Sc.
+>
+> NIP 198510172015042001
+>
+> **Program Studi S-1 Teknik Informatika**
+>
+> Departemen Teknik Informatika
+>
+> Fakultas Teknologi Elektro dan Informatika Cerdas
+>
+> Institut Teknologi Sepuluh Nopember
+>
+> Surabaya
+>
+> 2025
 
 *Halaman ini sengaja dikosongkan.*
 
@@ -605,7 +634,7 @@ dependency-free split dan pipeline multimodal, sementara eksplorasi
 backbone audio pra-latih untuk skenario audio-only masih terbatas.
 
 Penelitian terkait terakhir yang diambil sebagai referensi yaitu
-penelitian yang dilakukan oleh Aylett et al. (2020) yang membahas
+penelitian yang dilakukan oleh Aylett et al. (2017) yang membahas
 bagaimana system TTS (text-to-speech) dan gaya kualitas suara bisa
 mengubah skor Big Five pada suara sintetis. Penelitian ini membuat
 stimulus dari tiga korpus teks yang terdiri dari About Myself, Speed
@@ -743,7 +772,7 @@ Transformer).
   for the generation  About Myself, Speed   synthesis vs unit         membentuk/menilai
   of artificial       Dating Positive,      selection synthesis       persepsi
   personality (Aylett Speed Dating          (CereVoice2), plus        kepribadian pada
-  et al., 2020)       Negative; stimulus    variasi voice quality     suara sintetis,
+  et al., 2017)       Negative; stimulus    variasi voice quality     suara sintetis,
                       berupa ucapan         (neutral/lax/tense).      bukan prediksi Big
                       sintetis yang dinilai Hasil contoh: naturalness Five audio-only
                       oleh 35 partisipan    neutral unit selection    dari data wawancara
@@ -758,8 +787,110 @@ Transformer).
 
 ## Dasar Teori
 
-Berdasarkan penelitian sebelumnya (Soldati et al., 2007), eksplorasi di
-VR mampu menghasilkan data yang beragam.
+Subbab ini memaparkan landasan teori yang digunakan sebagai dasar dalam
+penelitian estimasi kepribadian Big Five berbasis audio-only. Landasan
+teori mencakup konsep kepribadian Big Five dan jenis label yang
+digunakan pada dataset, karakteristik sinyal suara dan fitur yang umum
+dipakai dalam analisis suara, prinsip dasar pemodelan berbasis
+representasi dengan Transformer pra-latih untuk audio, serta strategi
+pelatihan (frozen feature extraction dan fine-tuning) dan metrik
+evaluasi yang digunakan untuk menilai kinerja model pada skenario
+audio-only.
+
+### Kepribadian Big Five
+
+Kepribadian dapat dipahami sebagai kumpulan perbedaan individu yang
+sering disebut sebagai trait psikologis, yang menjelaskan pola proses
+mental dan perilaku yang cenderung bertahan dari waktu ke waktu (Phan &
+Rauthmann, 2021). Karena *trait* tidak dapat diamati secara langsung,
+keberadaannya umumnya disimpulkan dari pola respons atau reaksi yang
+berulang (Phan & Rauthmann, 2021). Dalam penelitian ini, kerangka yang
+digunakan adalah Big Five atau Five-Factor Model (FFM), yaitu
+pengelompokan trait ke dalam lima dimensi dasar (McCrae & John, 1992).
+Lima dimensi tersebut adalah Extraversion, Agreeableness,
+Conscientiousness, Neuroticism, dan Openness to Experience (McCrae &
+John, 1992). Struktur lima dimensi ini juga sering muncul dari kata-kata
+sifat yang biasa dipakai untuk menggambarkan kepribadian, dan pola yang
+serupa dilaporkan tetap terlihat pada beberapa bahasa yang berbeda
+(Goldberg, 1990). Big Five banyak digunakan sebagai taksonomi *trait*
+yang umum dipakai dalam berbagai pengukuran kepribadian (Phan &
+Rauthmann, 2021). Ini dikarenakan trait yang diukur cenderung relatif
+stabil dari waktu ke waktu, dapat digunakan lintas budaya, dan
+dilaporkan berkaitan dengan berbagai hasil penting dalam kehidupan
+(Mawalim et al., 2023). FFM ini didukung oleh banyak penelitian, baik
+yang memakai kata-kata sifat dalam bahasa sehari-hari maupun kuesioner
+kepribadian, dan model ini dilaporkan tetap relevan meski dinilai oleh
+orang yang berbeda atau berasal dari budaya yang berbeda (McCrae & John,
+1992).
+
+Untuk memberi gambaran ringkas, kelima dimensi Big Five sering
+dijelaskan melalui contoh ciri berikut (Phan & Rauthmann, 2021).
+
+1.  Openness: rasa ingin tahu, imajinatif, peka estetika.
+
+2.  Conscientiousness: terorganisasi, produktif, bertanggung jawab.
+
+3.  Extraversion: supel, tegas, energik.
+
+4.  Agreeableness: berbelas kasih, menghargai orang lain, mudah percaya.
+
+5.  Neuroticism / Negative Affectivity: mudah cemas, murung, emosinya
+    mudah berubah.
+
+Dalam praktiknya, Big Five biasanya diukur menggunakan kuesioner yang
+menghasilkan skor untuk kelima dimensinya. Salah satu alat ukur yang
+cukup sering digunakan adalah Big Five Inventory (BFI), yang tersedia
+dalam versi lengkap maupun versi singkat. Sebagai contoh, BFI-44 terdiri
+dari 44 butir pertanyaan, sedangkan BFI-10 hanya memuat 10 butir
+sehingga lebih cocok dipakai ketika waktu pengisian terbatas dan
+dibutuhkan pengukuran yang ringkas (Rammstedt & John, 2007). Meski versi
+singkat memudahkan saat waktu pengisian terbatas, beberapa kajian
+menilai skala yang terlalu singkat berisiko kurang menangkap ragam
+aspek/nuansa kepribadian dibandingkan versi yang lebih panjang (Mõttus
+et al., 2019).
+
+### Jenis label: *self-report* vs *apparent personality*
+
+Dalam penelitian prediksi kepribadian, label (ground truth) umumnya
+berasal dari dua sumber yang berbeda, yaitu *self-report* dan *apparent
+personality (Lukac, 2024)*. *Self-report* diperoleh saat seseorang
+menilai dirinya sendiri melalui kuesioner Big Five (Lukac, 2024). Dengan
+cara ini, skor yang dikumpulkan merepresentasikan bagaimana individu
+melihat dirinya sendiri, sehingga label sangat bergantung pada jawaban
+pribadi responden (Lukac, 2024). Pada studi Lukac (2024), peserta
+mengisi kuesioner Big Five (self-reported) lalu memberikan sampel suara,
+dan model kemudian dilatih untuk memprediksi skor yang dilaporkan oleh
+peserta tersebut. Namun, *self-report* tetap memiliki keterbatasan,
+misalnya jawaban dapat dipengaruhi kecenderungan ingin terlihat baik
+atau bias lain dalam pelaporan diri (Lukac, 2024).
+
+Sedangkan *apparent personality* (sering juga dipahami sebagai
+*perceived personality*) diperoleh dari penilaian orang lain berdasarkan
+perilaku yang terlihat/terdengar, bukan dari pengakuan diri sendiri dari
+subjek penelitian (L´opez et al., 2016). Pada konteks dataset First
+Impressions (ChaLearn LAP 2016), target Big Five dinilai menggunakan
+*human judgment* dari banyak penilai (*crowd workers*) terhadap klip
+video subjek yang berbicara di depan kamera, sehingga label yang
+dihasilkan merepresentasikan kesan yang terbentuk pada pengamat
+(*apparent*) (L´opez et al., 2016). Selain itu, studi Aylett et al.
+(2017) menunjukkan bahwa penilaian Big Five juga dapat dilakukan oleh
+pendengar ketika diberikan stimulus ujaran (termasuk ujaran sintetis),
+dan persepsi sifat dapat berubah seiring perbedaan kualitas suara maupun
+isi teks yang diucapkan.
+
+Secara ringkas, perbedaannya dapat dipahami sebagai berikut:
+
+1.  Self-report: skor "kepribadian menurut diri sendiri" (identitas
+    diri), biasanya dari kuesioner (Lukac, 2024).
+
+2.  Apparent personality: skor "kepribadian menurut orang lain"
+    (kesan/penilaian pengamat) berdasarkan cuplikan perilaku, misalnya
+    klip wawancara (Aylett et al., 2017; L´opez et al., 2016).
+
+Karena penelitian ini memakai dataset berlabel *apparent*, maka hasil
+prediksi yang dibahas nantinya lebih tepat dipahami sebagai kemampuan
+model meniru penilaian pengamat terhadap kepribadian, bukan semata-mata
+"kepribadian yang dilaporkan oleh subjek sendiri".
 
 *Halaman ini sengaja dikosongkan.*
 
@@ -773,10 +904,10 @@ VR mampu menghasilkan data yang beragam.
 
 Penelitian Tugas Akhir ini akan dilaksanakan selama enam bulan dari
 Maret sampai dengan September 2024. Lini masa pengerjaan Tugas Akhir
-bisa dilihat pada [Tabel ‎3.1](#_Ref193440555). Judul tabel perlu ditulis
-dalam format *Title Case*, yang berarti setiap kata diawali huruf
-kapital, kecuali untuk kata depan seperti 'di', 'ke', 'dari', 'yang',
-'untuk', 'kepada', dan sebagainya.
+bisa dilihat pada Tabel ‎3.1. Judul tabel perlu ditulis dalam format
+*Title Case*, yang berarti setiap kata diawali huruf kapital, kecuali
+untuk kata depan seperti 'di', 'ke', 'dari', 'yang', 'untuk', 'kepada',
+dan sebagainya.
 
   ---------------------------------------------------------------------------
   No   Aktivitas              MAR   APR   MEI   JUN         JUL   AGU   SEP
@@ -811,7 +942,7 @@ of apparent personality using feature attention and error consistency
 constraint. *Image and Vision Computing*, *110*.
 https://doi.org/10.1016/j.imavis.2021.104163
 
-Aylett, M. P., Vinciarelli, A., & Wester, M. (2020). Speech synthesis
+Aylett, M. P., Vinciarelli, A., & Wester, M. (2017). Speech synthesis
 for the generation of artificial personality. *IEEE Transactions on
 Affective Computing*, *11*(2), 361--372.
 https://doi.org/10.1109/TAFFC.2017.2763134
@@ -844,10 +975,19 @@ videos of self-presentation and induced behavior. *Journal on Multimodal
 User Interfaces*, *15*(4), 337--358.
 https://doi.org/10.1007/s12193-020-00347-7
 
+Goldberg, L. R. (1990). *An Alternative "Description of Personality":
+The Big-Five Factor Structure*.
+
 Hsu, W.-N., Bolte, B., Tsai, Y.-H. H., Lakhotia, K., Salakhutdinov, R.,
 & Mohamed, A. (2021). *HuBERT: Self-Supervised Speech Representation
 Learning by Masked Prediction of Hidden Units*.
 http://arxiv.org/abs/2106.07447
+
+L´opez, V. P., Chen, B., Oliu, M., Corneanu, C., Clapes, A., Guyon, I.,
+Baro, X., Escalante, H. J., & Escalera, S. (2016). *ChaLearn LAP 2016:
+First Round Challenge on First Impressions - Dataset and Results* (G.
+Hua & H. Jégou, Eds.; Vol. 9915). Springer International Publishing.
+https://doi.org/10.1007/978-3-319-49409-8
 
 Lukac, M. (2024). Speech-based personality prediction using deep
 learning with acoustic and linguistic embeddings. *Scientific Reports*,
@@ -858,18 +998,30 @@ Personality trait estimation in group discussions using multimodal
 analysis and speaker embedding. *Journal on Multimodal User Interfaces*,
 *17*(2), 47--63. https://doi.org/10.1007/s12193-023-00401-0
 
+McCrae, R. R., & John, O. P. (1992). *An Introduction to the Five-Factor
+Model and Its Applications*.
+https://digitalcommons.unl.edu/publichealthresources
+
+Mõttus, R., Sinick, J., Terracciano, A., Hřebíčková, M., Kandler, C.,
+Ando, J., Mortensen, E. L., Colodro-Conde, L., & Jang, K. L. (2019).
+Personality characteristics below facets: A replication and
+meta-analysis of cross-rater agreement, rank-order stability,
+heritability, and utility of personality nuances. *Journal of
+Personality and Social Psychology*, *117*(4), e35--e50.
+https://doi.org/10.1037/pspp0000202
+
 Phan, L. V., & Rauthmann, J. F. (2021). Personality computing: New
 frontiers in personality assessment. *Social and Personality Psychology
 Compass*, *15*(7). https://doi.org/10.1111/spc3.12624
 
+Rammstedt, B., & John, O. P. (2007). Measuring personality in one minute
+or less: A 10-item short version of the Big Five Inventory in English
+and German. *Journal of Research in Personality*, *41*(1), 203--212.
+https://doi.org/10.1016/j.jrp.2006.02.001
+
 Rubio, V. J., Aguado, D., Toledano, D. T., & Fernández-Gallego, M. P.
 (2024). Feasibility of Big Data Analytics to Assess Personality Based on
 Voice Analysis. *Sensors*, *24*(22). https://doi.org/10.3390/s24227151
-
-Soldati, M., Doulis, M., & Csillaghy, A. (2007). SphereViz - Data
-Exploration in a Virtual Reality Environment. *2007 11th International
-Conference Information Visualization (IV '07)*, 680--683.
-https://doi.org/10.1109/IV.2007.105
 
 Zhao, X., Liao, Y., Tang, Z., Xu, Y., Tao, X., Wang, D., Wang, G., & Lu,
 H. (2023). Integrating audio and visual modalities for multimodal
